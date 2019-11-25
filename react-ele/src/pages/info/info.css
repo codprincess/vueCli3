@@ -1,0 +1,24 @@
+.rating-page {}
+
+.rating-page .info_main {
+    background-color: #fff;
+    width: 100%;
+    font-size: .426667rem;
+    color: #333;
+}
+
+.rating-page .info_main .info_list {
+    padding: .266667rem .373333rem;
+    padding: 2.666667vw 3.733333vw;
+    cursor: pointer;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.rating-page .info_main .info_avatar {
+    position: relative;
+}

@@ -8,7 +8,7 @@ class Profile extends Component {
         return (
             <div className="profile-container">
                 <section>
-                   <Link to="/login" className="profile_top">
+                    <Link to="/info" className="profile_top">
                        <div className="profile_avatar">
                             <img src={avatar} alt=""/>
                        </div>

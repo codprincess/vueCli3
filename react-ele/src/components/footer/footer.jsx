@@ -6,7 +6,7 @@ import '../../assets/iconfont/iconfont.js';
     render() {
         return (
             <section className="footer-container">
-                <NavLink className='guide-item' to='/'>
+                <NavLink className='guide-item' to='/home'>
                     <div className='icon-changyonglogo40 icon-style'></div>
                     <span className='spec-text'>外卖</span>
                 </NavLink>
