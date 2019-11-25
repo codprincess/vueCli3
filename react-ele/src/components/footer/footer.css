@@ -1,0 +1,79 @@
+@import '../../assets/iconfont/iconfont.css';
+
+.footer-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding-top: .12rem;
+    padding-top: 1.2vw;
+    background-color: #fff;
+    min-height: 1.333333rem;
+    min-height: 13.333333vw;
+    box-shadow: 0 -0.026667rem 0.053333rem rgba(0, 0, 0, .1);
+    box-shadow: 0 -0.266667vw 0.533333vw rgba(0, 0, 0, .1);
+}
+
+.guide-item {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.icon-changyonglogo40 {
+    font-size: 1.8rem;
+    color: #666;
+    margin-top: -0.2rem;
+}
+
+.spec-text {
+    margin-top: -0.4rem;
+}
+
+.icon-zhinanzhen {
+    font-size: 1.0rem;
+    color: #666;
+    margin-top: 0rem;
+}
+
+.icon-dingdan {
+    font-size: 0.80rem;
+    color: #666;
+    margin-top: -0.2rem;
+}
+
+.icon-account {
+    font-size: 0.80rem;
+    color: #666;
+    margin-top: -0.2rem;
+    fill: #3190e8;
+}
+
+span {
+    font-size: 0.48rem;
+    color: #666;
+}
+
+.active {
+    color: #3190e8;
+    font-size: 25px;
+}
+
+.active .icon-style {
+    color: #3190e8 !important;
+    font-weight: bold;
+}
+
+.active span {
+    color: #3190e8 !important;
+}
