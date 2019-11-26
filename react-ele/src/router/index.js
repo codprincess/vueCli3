@@ -7,6 +7,7 @@ import Home from '../pages/home';
 import Info from '../pages/info';
 import Name from '../pages/setuser/name';
 import Rebind from '../pages/setuser/rebind';
+import Address from '../pages/setuser/address';
 export default class RouteConfig extends Component {
     render() {
         return (
@@ -18,6 +19,7 @@ export default class RouteConfig extends Component {
                     <Route path="/info" component={Info}></Route>
                     <Route path="/setuser/name" component={Name}></Route>
                     <Route path="/setuser/rebind" component={Rebind}></Route>
+                    <Route path="/setuser/address" component={Address}></Route>
                     {/* <Redirect exact from='/' to='/profile' />
                     <Route component={Profile} /> */}
                 </Switch>
