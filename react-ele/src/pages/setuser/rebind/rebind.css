@@ -1,0 +1,65 @@
+.rebind_warp {
+    padding-left: 4vw;
+    background-color: #fff;
+    margin-top: 2.666667vw;
+}
+
+.rebind_form {
+    padding-right: 4vw;
+    display: flex;
+    align-items: center;
+    line-height: 11.733333vw;
+    font-size: .4rem;
+}
+
+.form_lable {
+    white-space: nowrap;
+    font-size: 1.0rem;
+    width: 20.666667vw;
+    flex: none;
+}
+
+.form_input {
+    width: 44vw;
+    border: none;
+    outline: none;
+}
+
+.tel_code.active_tel_code {
+    color: #fff;
+    border-color: #0097ff;
+    background-color: #0097ff;
+}
+
+.tel_code {
+    padding: 0 3.333333vw;
+    font-size: .4rem;
+    border: 2px solid transparent;
+    border-radius: .533333vw;
+    height: 8vw;
+    white-space: nowrap;
+}
+
+/* .form_lable:last-child {
+    border-top: 1px solid #eee;
+} */
+
+.rebind_btn_warp {
+    padding: 4.4vw 4vw 3.466667vw;
+}
+
+.rebind_btn:disabled {
+    color: rgba(0, 0, 0, .38);
+    border-color: transparent;
+    background-color: rgba(0, 0, 0, .06)
+}
+
+.rebind_btn {
+    width: 100%;
+    height: 11.733333vw;
+    font-weight: 700;
+    padding: 0 3.333333vw;
+    font-size: 0.8rem;
+    border: 2px solid transparent;
+    border-radius: .533333vw;
+}
