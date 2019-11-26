@@ -8,8 +8,7 @@
 }
 
 .rating-page .info_main .info_list {
-    padding: .266667rem .373333rem;
-    padding: 2.666667vw 3.733333vw;
+    padding: 15px 3.733333vw;
     cursor: pointer;
     display: -webkit-flex;
     display: flex;
@@ -19,6 +18,91 @@
     align-items: center;
 }
 
+.info_list:last-child {
+    padding: 3.733333vw;
+    border-top: 1px solid #eee;
+}
+
 .rating-page .info_main .info_avatar {
     position: relative;
+}
+
+.main-avatar {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.toux {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.setcode {
+    font-size: 16px;
+}
+
+.profile-info-upload {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.profile-info-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.profile-info-img img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.main_info_list {
+    color: #666;
+    font-size: 16px;
+}
+
+.main_info_code {
+    color: #0097ff;
+    font-size: 16px;
+}
+
+.info_title {
+    margin: 4.266667vw 0 1.866667vw 3.733333vw;
+    font-size: .32rem;
+    color: #999;
+}
+
+.zhanghao_ul {
+    background-color: #fff;
+    width: 100%;
+    font-size: .426667rem;
+    color: #333;
+}
+
+.logout_btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 3.733333vw 0;
+    margin: 5.333333vw 0;
+    color: #ff5339;
+    border-radius: .8vw;
+    font-size: 1.0rem;
+    font-weight: 700;
+    background-color: #fff;
+    outline: none;
+    border: none;
 }

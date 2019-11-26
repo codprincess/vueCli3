@@ -5,6 +5,7 @@ import Login from '../pages/login/index';
 import Profile from '../pages/profile/index'
 import Home from '../pages/home';
 import Info from '../pages/info';
+import Name from '../pages/setuser/name';
 export default class RouteConfig extends Component {
     render() {
         return (
@@ -14,6 +15,7 @@ export default class RouteConfig extends Component {
                     <Route path="/profile" component={Profile}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/info" component={Info}></Route>
+                    <Route path="/setuser/name" component={Name}></Route>
                     {/* <Redirect exact from='/' to='/profile' />
                     <Route component={Profile} /> */}
                 </Switch>
