@@ -8,6 +8,7 @@ import Info from '../pages/info';
 import Name from '../pages/setuser/name';
 import Rebind from '../pages/setuser/rebind';
 import Address from '../pages/setuser/address';
+import Order from '../pages/order';
 export default class RouteConfig extends Component {
     render() {
         return (
@@ -17,6 +18,7 @@ export default class RouteConfig extends Component {
                     <Route path="/profile" component={Profile}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/info" component={Info}></Route>
+                    <Route path="/order" component={Order}></Route>
                     <Route path="/setuser/name" component={Name}></Route>
                     <Route path="/setuser/rebind" component={Rebind}></Route>
                     <Route path="/setuser/address" component={Address}></Route>
