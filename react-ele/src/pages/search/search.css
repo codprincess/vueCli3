@@ -1,0 +1,104 @@
+.search_warp {
+    background: #fff;
+}
+
+.search_section {
+    background: #fff;
+    position: relative;
+    z-index: 52;
+}
+
+.header_search_warp {
+    background: #fff;
+}
+
+.header_search_box {}
+
+.header-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 11.733333vw;
+    height: 11.733333vw;
+    color: #333333;
+    font-size: 1.6rem;
+}
+
+.header_title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 11.733333vw;
+    max-width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 11.733333vw;
+    transform: translateX(-50%);
+}
+
+.search_form {
+    flex-grow: 1;
+    padding: 2.933333vw 2.933333vw 2.933333vw 0;
+    margin-left: 2.933333vw;
+    background-color: #fff;
+    z-index: 101;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.search_form .search_input {
+    /* width: 8 0%; */
+    flex-grow: 1;
+    border-radius: .266667vw;
+    -webkit-appearance: none;
+    background-color: #f8f8f8;
+    padding: 1.733333vw 4vw 1.733333vw 8.8vw;
+    font-size: .346667rem;
+    color: #666;
+}
+
+.search_form .search_btn {
+    /* width: 10%; */
+    outline: none;
+    color: #333;
+    font-size: 1.0rem;
+    background: #fff;
+    font-weight: 700;
+    margin-left: 2.933333vw;
+    outline: none;
+    border: none;
+    margin-right: 2.933333vw;
+}
+
+.hot_search {
+    padding-bottom: 0px;
+    height: calc(100vh - 13.6vw);
+}
+
+.hot_search .has_data .hot_title {
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    font-size: 1.0rem;
+    padding: .2rem .333333rem;
+    padding: 2vw 3.333333vw;
+    color: #666;
+    font-weight: 700;
+}
+
+.hot_search .has_data .hot_btn {
+    display: inline-block;
+    border-radius: .666667vw;
+    padding: 2vw 2.666667vw;
+    font-size: .373333rem;
+    margin-right: 3.333333vw;
+    margin-top: 3.333333vw;
+    color: #666;
+    background-color: #f7f7f7;
+    outline: none;
+    border: none;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import avatar from '../../assets/img/avatar.png'
+import Footer from '../../components/footer/footer'
 import './order.css'
 class Order extends Component {
     render() {
@@ -68,6 +69,7 @@ class Order extends Component {
                         <button className="card_alert">评价得金币</button>
                     </div>
                 </div>
+                <Footer></Footer>
             </div>
         )
     }

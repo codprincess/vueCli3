@@ -9,6 +9,7 @@ import Name from '../pages/setuser/name';
 import Rebind from '../pages/setuser/rebind';
 import Address from '../pages/setuser/address';
 import Order from '../pages/order';
+import Search from '../pages/search';
 export default class RouteConfig extends Component {
     render() {
         return (
@@ -19,6 +20,7 @@ export default class RouteConfig extends Component {
                     <Route path="/login" component={Login}></Route>
                     <Route path="/info" component={Info}></Route>
                     <Route path="/order" component={Order}></Route>
+                    <Route path="/search" component={Search}></Route>
                     <Route path="/setuser/name" component={Name}></Route>
                     <Route path="/setuser/rebind" component={Rebind}></Route>
                     <Route path="/setuser/address" component={Address}></Route>
