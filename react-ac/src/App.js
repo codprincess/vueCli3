@@ -6,6 +6,7 @@ import PriceList from './components/priceList';
 import ViewTab from './components/viewTab';
 import { LIST_VIEW } from './unit';
 import TotalPrice from './components/totalPrice';
+import MonthPicker from './components/monthPicker';
 
 const items = [
   {
@@ -33,6 +34,7 @@ function App() {
         onDeleteItem={(item) => { alert(item.id) }}></PriceList>
       <ViewTab activeTab={LIST_VIEW} onTabChange={(view)=>{console.log(view)}}></ViewTab>
       <TotalPrice income={5500} outcome={10000}></TotalPrice>
+      <MonthPicker year={2019} month={11}></MonthPicker>
     </div>
   );
 }
