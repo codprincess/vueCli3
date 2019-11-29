@@ -26,3 +26,21 @@ export const range = (size,startAt = 0)=>{
     }
     return arr
 }
+
+//获取当前时间
+export const parseToYearAndMonth = (str)=>{
+    const date = str ? new Date(str) : new Date()
+    return {
+        year:date.getFullYear(),
+        month:date.getMonth()
+    }
+}
+
+//数据校验
+export const isValidDate=(dateString)=>{
+    const regEx = /^\d{4}-\d{2}-\d{2}$/;
+    if(!dateString.match(regEx)) return false;
+    const d = new Date(dateString);
+    if(Number.isNaN(d.getTime())) return false;
+    return d.toISOString().slice(0,10) === dateString;
+}
