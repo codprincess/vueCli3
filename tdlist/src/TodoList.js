@@ -41,6 +41,16 @@ class TodoList extends Component {
         store.dispatch(action)
         console.log('1223456');
     }
+
+    //删除,不写bind而是用括号的话,就会直接调用
+    deleteItem(index){
+        const action = {
+            type:'deleteItem',
+            index
+        }
+        store.dispatch(action)
+        //console.log(index)
+    }
     render() {
         return (
             <div style={{ margin: '10px' }}>
@@ -52,7 +62,7 @@ class TodoList extends Component {
                     <List
                         bordered
                         dataSource={this.state.list}
-                        renderItem={item=>(<List.Item>{item}</List.Item>)}
+                        renderItem={(item,index)=>(<List.Item onClick={this.deleteItem.bind(this,index)}>{item}</List.Item>)}
                     ></List>
                 </div>
             </div>
