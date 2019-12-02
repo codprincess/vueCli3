@@ -3,9 +3,9 @@ import 'antd/dist/antd.css'
 import { Input, Button ,List} from 'antd'
 import store from './store/index'
 import {CHANGE_INPUT,ADD_ITEM,DELETE_ITEM} from './store/actionTypes'
-import { changeInputAction, addItemAction, deleteItemAction, getListAction} from './store/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getListAction, getTodoList} from './store/actionCreators'
 import TodoListUI from './TodoListUI'
-import axios from 'axios'
+import {connect} from 'react-redux'
 // const date = [
 //     '早8点开晨会，分配今天的开发工作',
 //     '早9点和项目经理作开发需求讨论会',
@@ -23,12 +23,15 @@ class TodoList extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res) => {
-           // console.log(res)
-           const data = res.data
-            const action = getListAction(data)
-            store.dispatch(action)
-        })
+        // axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res) => {
+        //    // console.log(res)
+        //    const data = res.data
+        //     const action = getListAction(data)
+        //     store.dispatch(action)
+        // })
+        //引入Redux-thunk
+        const action = getTodoList()
+        store.dispatch(action)
     }
     changeInputValue =(e)=>{
         // console.log(e.target.value)
@@ -65,6 +68,10 @@ class TodoList extends Component {
         store.dispatch(action)
         //console.log(index)
     }
+
+    // changeInputValues=(e)=>{
+    //     console.log(e.target.value)
+    // }
     render() {
         return (
             // <div style={{ margin: '10px' }}>
@@ -80,14 +87,38 @@ class TodoList extends Component {
             //         ></List>
             //     </div>
             // </div>
-            <TodoListUI
-                inputValue={this.state.inputValue}
-                list={this.state.list}
-                changeInputValue={this.changeInputValue}
-                clickBtn={this.clickBtn}
-                deleteItem={this.deleteItem}
-            ></TodoListUI>
+            <div>
+                <TodoListUI
+                    inputValue={this.state.inputValue}
+                    list={this.state.list}
+                    changeInputValue={this.changeInputValue}
+                    clickBtn={this.clickBtn}
+                    deleteItem={this.deleteItem}
+                ></TodoListUI>
+
+                <div>
+                    <Input onChange={this.props.changeInputValues} value={this.props.inputValue} style={{ width: '250px', marginRight: '10px'}} />
+                    <Button type="primary">增加</Button>
+                </div>
+            </div>
         )
     }
 }
-export default TodoList
+
+
+const stateToProps = (state)=>{
+    return {
+        inputValue : state.inputValue
+    }
+}
+
+//编写DispatchToProps
+//DispatchToProps就是要传递的第二个参数，通过这个参数才能改变store中的值。
+const dispatchToProps = (dispatch)=>{
+    return {
+        changeInputValues(e){
+            console.log(e.target.value)
+        }
+    }
+}
+export default connect(stateToProps, dispatchToProps)(TodoList);
