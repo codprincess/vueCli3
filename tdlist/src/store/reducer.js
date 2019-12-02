@@ -1,3 +1,4 @@
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM} from './actionTypes'
 //初始化数据
 const defaultState = {
     inputValue:'do something',
@@ -14,13 +15,13 @@ export default (state=defaultState,action)=>{
     //     return newState
     // }
     switch(action.type){
-        case 'changInput':
+        case CHANGE_INPUT:
            { 
                let newState = JSON.parse(JSON.stringify(state))
                 newState.inputValue = action.value
                 return newState
             }
-        case 'addItem':
+        case ADD_ITEM:
             {
                 let newState = JSON.parse(JSON.stringify(state))
                 newState.list.push(newState.inputValue)
@@ -28,7 +29,7 @@ export default (state=defaultState,action)=>{
                 return newState
             }
             
-        case 'deleteItem':
+        case DELETE_ITEM:
             {
                 let newState = JSON.parse(JSON.stringify(state))
                 newState.list.splice(action.index,1)//删除数组中对应的值

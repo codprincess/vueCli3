@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 import { Input, Button ,List} from 'antd'
 import store from './store/index'
+import {CHANGE_INPUT,ADD_ITEM,DELETE_ITEM} from './store/actionTypes'
 
 // const date = [
 //     '早8点开晨会，分配今天的开发工作',
@@ -22,7 +23,7 @@ class TodoList extends Component {
     changeInputValue =(e)=>{
         // console.log(e.target.value)
         const action = {
-            type:'changInput',
+            type: CHANGE_INPUT,
             value: e.target.value
         }
         //要通过dispatch()方法传递给store
@@ -37,7 +38,7 @@ class TodoList extends Component {
     //增加
     clickBtn=()=>{
         //在clickBtn方法里增加Action，然后用dispatch()方法传递给store
-        const action = {type:'addItem'}
+        const action = { type: ADD_ITEM}
         store.dispatch(action)
         console.log('1223456');
     }
@@ -45,7 +46,7 @@ class TodoList extends Component {
     //删除,不写bind而是用括号的话,就会直接调用
     deleteItem(index){
         const action = {
-            type:'deleteItem',
+            type: DELETE_ITEM,
             index
         }
         store.dispatch(action)
