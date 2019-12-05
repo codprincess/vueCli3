@@ -5,7 +5,7 @@ const defaultState = {
     list:[]
 }
 export default (state=defaultState,action)=>{
-    console.log('store接收action传给reducer',state,action)
+    // console.log('store接收action传给reducer',state,action)
     // if(action.type === 'changInput'){
     //     let newState = JSON.parse(JSON.stringify(state))
     //     newState.inputValue = action.value
