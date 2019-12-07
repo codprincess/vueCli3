@@ -1,3 +1,6 @@
+/**
+ * Creact by 小公主 on 2019/12/07.
+ */
 //axios的封装
 import service from './request'
 import qs from 'qs'

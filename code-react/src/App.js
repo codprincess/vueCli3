@@ -1,7 +1,11 @@
+/**
+ * Creact by 小公主 on 2019/12/07.
+ */
 import React, { Component } from 'react'
+import { Button, message } from 'antd'
 // import service from './axios/request'
 // import axios from 'axios'
-import { _getList} from './axios/api'
+import { _getList } from './axios/api'
 class App extends Component {
   constructor(props){
     super(props)
@@ -13,13 +17,16 @@ class App extends Component {
     const res = await _getList()
     console.log(res)
   }
+  handleClick = () => {
+    message.success('成功啦...');
+  }
   componentWillMount(){
     this.getList()
   }
   render() {
     return (
       <div>
-        首页
+        <Button type='primary' onClick={this.handleClick}>学习</Button>
       </div>
     )
   }
