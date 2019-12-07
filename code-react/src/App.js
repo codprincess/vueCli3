@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import service from './axios/request'
-import axios from 'axios'
+// import service from './axios/request'
+// import axios from 'axios'
+import { _getList} from './axios/api'
 class App extends Component {
   constructor(props){
     super(props)
@@ -9,15 +10,10 @@ class App extends Component {
     }
   }
   async getList(){
-    const res = await service.get('/mock.json', {})
+    const res = await _getList()
     console.log(res)
   }
   componentWillMount(){
-    // service.get('api/example/list',{}).then((res)=>{
-    //   if(res){
-    //     console.log(res)
-    //   }
-    // })
     this.getList()
   }
   render() {
