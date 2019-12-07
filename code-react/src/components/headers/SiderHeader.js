@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class login extends Component {
+export default class SiderHeader extends Component {
     render() {
         return (
             <div>
-                登录页面
+                11111
             </div>
         )
     }

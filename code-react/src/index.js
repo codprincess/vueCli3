@@ -4,11 +4,12 @@ import './index.css';
 import App from './App';
 import {Provider} from 'react-redux'
 import store from './redux/index'
+import IRouter from './routes/router'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <IRouter />
     </Provider>,
 
 document.getElementById('root'));
