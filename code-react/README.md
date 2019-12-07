@@ -1,6 +1,6 @@
 ### axios的封装和跨域请求处理
 ### antd按需加载和主题定制
-
+### redux配置
 ## Available Scripts
 
 In the project directory, you can run:
