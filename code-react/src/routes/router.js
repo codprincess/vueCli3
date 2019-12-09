@@ -13,9 +13,9 @@ class IRouter extends Component {
                         <Admin>
                             <Switch>
                                 <Route path='/home' component={Home}></Route>
+                                <Redirect to="/home" />
                             </Switch>
                         </Admin>
-                       
                     }></Route>
                 </Switch>
             </HashRouter>

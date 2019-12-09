@@ -1,5 +1,8 @@
+/**
+ * Created by 小公主 on 2019/12/09.
+ */
 import React, { Component } from 'react';
-import { Layout, Menu} from 'antd';
+// import { Layout, Menu} from 'antd';
 import MenuConfig from '../../routes/config'
 import NavItem from './NavItem';
 import './index.less'
