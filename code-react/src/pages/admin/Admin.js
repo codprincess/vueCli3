@@ -5,6 +5,8 @@ import React, { Component } from 'react'
 import { Row, Col } from 'antd';
 import Headers from '../../components/headers/Headers';
 import NavLeft from '../../components/navleft/NavLeft';
+import Footer from '../../components/Footer/Footer';
+import './index.less'
 export default class Admin extends Component {
     render() {
         return (
@@ -18,6 +20,7 @@ export default class Admin extends Component {
                         <Row className="content" style={{ background:"#F0F2F5"}}>
                             {this.props.children}
                        </Row>
+                        <Footer />
                     </Col>
                    
                 </Row>

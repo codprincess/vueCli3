@@ -3,6 +3,7 @@ import {HashRouter,Redirect,Route,Switch} from 'react-router-dom'
 import App from '../App'
 import Admin from '../pages/admin/Admin'
 import Home from '../pages/home/Home'
+import Buttons from '../pages/general/buttons'
 class IRouter extends Component {
     render() {
         return (
@@ -13,6 +14,7 @@ class IRouter extends Component {
                         <Admin>
                             <Switch>
                                 <Route path='/home' component={Home}></Route>
+                                <Route path="/general/buttons" component={Buttons}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>

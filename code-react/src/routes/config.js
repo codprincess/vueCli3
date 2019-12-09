@@ -7,9 +7,9 @@ const menuList = [
     {
         title: '基本组件',
         icon: 'laptop',
-        key: '/home/general',
+        key: '/general',
         subs: [
-            { key: '/home/general/button', title: '按钮', icon: '', },
+            { key: '/general/buttons', title: '按钮', icon: '', },
             { key: '/home/general/icon', title: '图标', icon: '', },
         ]
     },
