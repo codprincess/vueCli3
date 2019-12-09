@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {HashRouter,Redirect,Route,Switch} from 'react-router-dom'
 import App from '../App'
 import Admin from '../pages/admin/Admin'
+import Home from '../pages/home/Home'
 class IRouter extends Component {
     render() {
         return (
@@ -9,7 +10,12 @@ class IRouter extends Component {
                 <App></App>
                 <Switch>
                     <Route path="/" render={()=>
-                        <Admin></Admin>
+                        <Admin>
+                            <Switch>
+                                <Route path='/home' component={Home}></Route>
+                            </Switch>
+                        </Admin>
+                       
                     }></Route>
                 </Switch>
             </HashRouter>
