@@ -5,6 +5,8 @@ import Admin from '../pages/admin/Admin'
 import Home from '../pages/home/Home'
 import Buttons from '../pages/general/buttons'
 import Icons from '../pages/general/Icons'
+import Loadings from '../pages/general/loadings'
+import Modals from '../pages/general/modals'
 class IRouter extends Component {
     render() {
         return (
@@ -17,6 +19,8 @@ class IRouter extends Component {
                                 <Route path='/home' component={Home}></Route>
                                 <Route path="/general/buttons" component={Buttons}></Route>
                                 <Route path="/general/Icons" component={Icons}></Route>
+                                <Route path="/general/loadings" component={Loadings}></Route>
+                                <Route path="/general/modals" component={Modals}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>
