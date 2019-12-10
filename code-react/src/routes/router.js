@@ -7,6 +7,7 @@ import Buttons from '../pages/general/buttons'
 import Icons from '../pages/general/Icons'
 import Loadings from '../pages/general/loadings'
 import Modals from '../pages/general/modals'
+import Notifications from '../pages/general/notifications'
 class IRouter extends Component {
     render() {
         return (
@@ -21,6 +22,7 @@ class IRouter extends Component {
                                 <Route path="/general/Icons" component={Icons}></Route>
                                 <Route path="/general/loadings" component={Loadings}></Route>
                                 <Route path="/general/modals" component={Modals}></Route>
+                                <Route path="/general/notifications" component={Notifications}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>

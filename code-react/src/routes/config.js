@@ -12,7 +12,9 @@ const menuList = [
             { key: '/general/buttons', title: '按钮', icon: '', },
             { key: '/general/Icons', title: '图标', icon: '', },
             { key: '/general/loadings', title: '加载中', icon:''},
-            { key: '/general/modals', title: '对话框', icon: '' }
+            { key: '/general/modals', title: '对话框', icon: '' },
+            { key: '/general/notifications', title: '通知提醒', icon: '' }
+
         ]
     },
     {
