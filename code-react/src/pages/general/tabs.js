@@ -3,31 +3,48 @@
  */
 import React, { Component } from 'react'
 import BreadcrumbItems from '../../components/breadcrumbitem/BreadcrumbItems'
-import { Row, Col, Card, Tabs, Icon, Radio, Select} from 'antd'
+import { Row, Col, Card, Tabs, Icon, Radio, Select, Button} from 'antd'
 const { TabPane } = Tabs;
 const { Option } = Select;
 class TabsR extends Component {
-    
-        state = {
-            itemList: [
-                { id: 1, title: '按钮1', icon: '', },
-                { id: 2, title: '图标1', icon: '', },
-                { id: 3, title: '加载中1', icon: '' },
-                { id: 4, title: '对话框1', icon: '' },
-                { id: 5, title: '通知提醒1', icon: '' },
-                { id: 6, title: '标签页1', icon: '' }
-            ],
-            itemList2: [
-                { id: 1, title: '按钮2', icon: '', },
-                { id: 2, title: '图标2', icon: '', },
-                { id: 3, title: '加载中2', icon: '' },
-                { id: 4, title: '对话框2', icon: '' },
-                { id: 5, title: '通知提醒2', icon: '' },
-                { id: 6, title: '标签页2', icon: '' }
-            ],
-            mode:'top',
-            tabPosition: 'top',
+        constructor(props){
+            super(props);
+            const panes = [
+                { title: 'Tab 1', content: 'Content of Tab 1', key: '1' },
+                { title: 'Tab 2', content: 'Content of Tab 2', key: '2' },
+                {
+                    title: 'Tab 3',
+                    content: 'Content of Tab 3',
+                    key: '3',
+                    closable: false,
+                },
+            ];
+
+            this.state = {
+                itemList: [
+                    { id: 1, title: '按钮1', icon: '', },
+                    { id: 2, title: '图标1', icon: '', },
+                    { id: 3, title: '加载中1', icon: '' },
+                    { id: 4, title: '对话框1', icon: '' },
+                    { id: 5, title: '通知提醒1', icon: '' },
+                    { id: 6, title: '标签页1', icon: '' }
+                ],
+                itemList2: [
+                    { id: 1, title: '按钮2', icon: '', },
+                    { id: 2, title: '图标2', icon: '', },
+                    { id: 3, title: '加载中2', icon: '' },
+                    { id: 4, title: '对话框2', icon: '' },
+                    { id: 5, title: '通知提醒2', icon: '' },
+                    { id: 6, title: '标签页2', icon: '' }
+                ],
+                mode: 'top',
+                tabPosition: 'top',
+                activeKey: panes[0].key,
+                newTabIndex: 0,
+                panes
+            }
         }
+        
     
     handleTabsChange=(e)=>{
        // console.log('55555',e)
@@ -55,6 +72,41 @@ class TabsR extends Component {
     changeTabPosition = tabPosition => {
         this.setState({ tabPosition });
     };
+    onChange = (activeKey)=>{
+        console.log('666',activeKey);
+        this.setState({activeKey});
+    }
+    onEdit = (targetKey, action)=>{
+        this[action](targetKey);
+
+    }
+
+    add = () => {
+        const { panes } = this.state;
+        const activeKey = `newTab${this.state.newTabIndex++}`;
+        panes.push({ title: 'New Tab', content: 'Content of new Tab', key: activeKey });
+        this.setState({ panes, activeKey });
+    };
+
+    remove = targetKey => {
+        let { activeKey } = this.state;
+        let lastIndex;
+        this.state.panes.forEach((pane, i) => {
+            if (pane.key === targetKey) {
+                lastIndex = i - 1;
+            }
+        });
+        const panes = this.state.panes.filter(pane => pane.key !== targetKey);
+        if (panes.length && activeKey === targetKey) {
+            if (lastIndex >= 0) {
+                activeKey = panes[lastIndex].key;
+            } else {
+                activeKey = panes[0].key;
+            }
+        }
+        this.setState({ panes, activeKey });
+    };
+
     render() {
         return (
             <div className="gutter-example button-demo">
@@ -177,6 +229,26 @@ class TabsR extends Component {
                                     <TabPane tab="Tab 3" key="3">
                                         Content of Tab 3
                                     </TabPane>
+                                </Tabs>
+                            </Card>
+                        </div>
+
+                        <div className="gutter-box">
+                            <Card title="支持新增和关闭选项" bordered={false}>
+                                <div style={{ marginBottom: 16 }}>
+                                    <Button onClick={this.add}>ADD</Button>
+                                </div>
+                                <Tabs
+                                    onChange={this.onChange}
+                                    activeKey={this.state.activeKey}
+                                    type="editable-card"
+                                    onEdit={this.onEdit}
+                                >
+                                    {this.state.panes.map(pane => (
+                                        <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>
+                                            {pane.content}
+                                        </TabPane>
+                                    ))}
                                 </Tabs>
                             </Card>
                         </div>
