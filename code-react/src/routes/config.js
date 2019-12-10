@@ -10,7 +10,7 @@ const menuList = [
         key: '/general',
         subs: [
             { key: '/general/buttons', title: '按钮', icon: '', },
-            { key: '/home/general/icon', title: '图标', icon: '', },
+            { key: '/general/Icons', title: '图标', icon: '', },
         ]
     },
     {
