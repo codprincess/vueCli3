@@ -15,7 +15,9 @@ const menuList = [
             { key: '/general/modals', title: '对话框', icon: '' },
             { key: '/general/notifications', title: '通知提醒', icon: '' },
             { key: '/general/tabs', title: '标签页', icon: '' },
-            { key:'/general/carousels',title:'轮播图',icon:''}
+            { key:'/general/carousels',title:'轮播图',icon:''},
+            { key: '/general/editor', title: '富文本', icon: '' }
+
 
         ]
     },
