@@ -9,6 +9,7 @@ import Loadings from '../pages/general/loadings'
 import Modals from '../pages/general/modals'
 import Notifications from '../pages/general/notifications'
 import TabsR from '../pages/general/tabs'
+import Carousels from '../pages/general/carousels'
 class IRouter extends Component {
     render() {
         return (
@@ -25,6 +26,7 @@ class IRouter extends Component {
                                 <Route path="/general/modals" component={Modals}></Route>
                                 <Route path="/general/notifications" component={Notifications}></Route>
                                 <Route path="/general/tabs" component={TabsR}></Route>
+                                <Route path="/general/carousels" component={Carousels}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>
