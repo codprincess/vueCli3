@@ -5,7 +5,6 @@ class Messages extends Component {
     showMessage = (type) => {
         message[type]("恭喜你，学会啦");
     }
-
     render() {
         return (
             <div>
