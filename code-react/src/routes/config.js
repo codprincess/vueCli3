@@ -16,7 +16,8 @@ const menuList = [
             { key: '/general/notifications', title: '通知提醒', icon: '' },
             { key: '/general/tabs', title: '标签页', icon: '' },
             { key:'/general/carousels',title:'轮播图',icon:''},
-            { key: '/general/editor', title: '富文本', icon: '' }
+            { key: '/general/editor', title: '富文本', icon: '' },
+             { key: '/general/messages', title: 'message全局提示', icon: '' }
 
 
         ]
