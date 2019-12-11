@@ -18,9 +18,17 @@ const menuList = [
             { key:'/general/carousels',title:'轮播图',icon:''},
             { key: '/general/editor', title: '富文本', icon: '' },
             { key: '/general/messages', title: 'message全局提示', icon: '' },
-            { key: '/general/draggable', title: '拖拽', icon: '' }
+            { key: '/general/draggable', title: '拖拽', icon: '' },
+           
 
-
+        ]
+    },
+    {
+        title: '表格',
+        icon: 'bars',
+        key: '/basictable',
+        subs:[
+            { key: '/basictable/BasicTable', title: '表格', icon: '' }
         ]
     },
     {

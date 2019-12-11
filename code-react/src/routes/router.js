@@ -13,6 +13,7 @@ import Carousels from '../pages/general/carousels'
 import Editors from '../pages/general/editor'
 import Messages from '../pages/general/messages'
 import Drag from '../pages/general/draggable'
+import BasicTable from '../pages/basictable/BasicTable'
 class IRouter extends Component {
     render() {
         return (
@@ -33,6 +34,7 @@ class IRouter extends Component {
                                 <Route path="/general/editor" component={Editors}></Route>
                                 <Route path="/general/messages" component={Messages}></Route>
                                 <Route path="/general/draggable" component={Drag}></Route>
+                                <Route path="/basictable/BasicTable" component={BasicTable}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>
