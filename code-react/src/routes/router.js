@@ -10,7 +10,7 @@ import Modals from '../pages/general/modals'
 import Notifications from '../pages/general/notifications'
 import TabsR from '../pages/general/tabs'
 import Carousels from '../pages/general/carousels'
-import Editor from '../pages/general/editor'
+import Editors from '../pages/general/editor'
 class IRouter extends Component {
     render() {
         return (
@@ -28,7 +28,7 @@ class IRouter extends Component {
                                 <Route path="/general/notifications" component={Notifications}></Route>
                                 <Route path="/general/tabs" component={TabsR}></Route>
                                 <Route path="/general/carousels" component={Carousels}></Route>
-                                <Route path="/general/editor" component={Editor}></Route>
+                                <Route path="/general/editor" component={Editors}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>

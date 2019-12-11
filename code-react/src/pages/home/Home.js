@@ -71,6 +71,7 @@ import EchartsRadarView from '../../components/EchartsRadarView/EchartsRadarView
                             </Card>
                         </div>
                     </Col>
+                    
                     <Col className="gutter-row" md={16}>
                         <div className="gutter-box">
                             <Card bordered={false} className={'no-padding'}>
