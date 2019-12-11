@@ -76,8 +76,8 @@ class BasicTable extends Component {
             },
             {
                 title: '用户名',
-                key: 'userName',
-                dataIndex: 'userName'
+                key: 'username',
+                dataIndex: 'username'
             },
             {
                 title: '性别',
@@ -183,7 +183,6 @@ class BasicTable extends Component {
                     </div>
                     <Table
                         bordered
-                        
                         rowSelection={rowSelection}
                         onRow={(record, index) => {
                             return {
