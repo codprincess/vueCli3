@@ -69,8 +69,8 @@ class Headers extends Component{
     render() {
       //  const { responsive = { data: {} } } = this.props;
         return (
-            <Header className="custom-theme header" style={{ background: "#000"}}>
-                {this.state.isMobile ? (
+            <Header className="custom-theme header" style={{ background: "#3C2E3D"}}>
+                {/* {this.state.isMobile ? (
                     <Popover
                         content={<SiderHeader popoverHide={this.popoverHide} />}
                         trigger="click"
@@ -86,7 +86,7 @@ class Headers extends Component{
                             type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.props.toggle}
                         />
-                    )}
+                    )} */}
                 <Menu
                     mode="horizontal"
                     style={{ lineHeight: '64px', float: 'right' }}
@@ -100,7 +100,7 @@ class Headers extends Component{
                     </Menu.Item> */}
                     <Menu.Item key="1">
                         <Badge count={25} overflowCount={10} style={{ marginLeft: 10 }}>
-                            <Icon type="notification" />
+                            <Icon type="notification" style={{ color:"#44b549"}}/>
                         </Badge>
                     </Menu.Item>
                     <SubMenu
