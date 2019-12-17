@@ -38,7 +38,7 @@ export default {
 
 <style scope>
   .text_group{
-    margin-top: 20px;
+    margin-top: 40px;
   }
   .input_group{
     position: relative;
