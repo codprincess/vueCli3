@@ -1,13 +1,23 @@
 import React, { Component } from 'react'
-import { Card, Table, Modal, Button} from 'antd'
+import { Card, Table, Modal, Button, Empty, ConfigProvider, Icon} from 'antd'
+//import { Empty } from 'antd';
 import { _getList } from '../../axios/api'
-import { isDOMComponent } from 'react-dom/test-utils'
+const customizeRenderEmpty = () => (
+    <div style={{ textAlign: 'center' }}>
+        <Icon type="smile" style={{ fontSize: 30 }} />
+        <p>暂无数据</p>
+    </div>
+);
 class BasicTable extends Component {
     state = {
         dataSource:[],
         selectedRowKeys: [],
         selectedRows: [],
     }
+    state = {
+        customize: false,
+    };
+    
 
     async getList(){
         const res = await _getList()
@@ -165,9 +175,12 @@ class BasicTable extends Component {
                 })
             }
         }
-        
+        // const emptyText = '暂无数据'
+        const { customize } = this.state;
         return (
+
             <div>
+                <ConfigProvider renderEmpty={customizeRenderEmpty}>
                 <Card>
                     <Table
                         bordered
@@ -211,6 +224,24 @@ class BasicTable extends Component {
                         pagination={false}
                     />
                 </Card>
+                <Card title="无数据时设置自定义图标" style={{ margin: '10px 0' }}>
+                    <div style={{ marginBottom: 10 }}>
+                        <Button onClick={this.handleDelete}>删除</Button>
+                    </div>
+                    
+                        <Table
+                            // locale={'无数据'}
+                            // empty-text="无数据"
+                            bordered
+                            rowSelection={rowCheckSelection}
+                            columns={columns}
+                            // dataSource={this.state.dataSource}
+                            pagination={false}
+                        />
+                    
+                   
+                </Card>
+                </ConfigProvider>
             </div>
         )
     }

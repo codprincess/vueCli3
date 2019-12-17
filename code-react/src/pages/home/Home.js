@@ -147,7 +147,7 @@ import EchartsRadarView from '../../components/EchartsRadarView/EchartsRadarView
                                             <img src={avatar} className="img-responsive img-circle" alt="test" />
                                         </span>
                                         <div className="clear">
-                                            <span className="block">大神</span>
+                                            <span className="block">尤雨溪</span>
                                             <span className="text-muted">请查看我们的文档</span>
                                         </div>
                                     </li>
