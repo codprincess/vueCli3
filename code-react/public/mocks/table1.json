@@ -2,44 +2,45 @@
     "code": 200,
     "data": [
         {
-            "key":"1",
+           
             "id": "1",
             "username": "张三",
             "sex": "女",
-            "state":"1",
+            "status":"3",
             "interest":"3",
             "birthday":"2019-12-01",
             "address":"广西宏禄招商大厦",
             "time":"12:00"
+          
         },
         {
-            "key": "2",
+       
            "id": "2",
             "username": "张四",
             "sex": "女",
-            "state": "1",
+            "status": "2",
             "interest": "1",
             "birthday": "2019-12-01",
             "address": "广西宏禄招商大厦",
             "time": "12:00"
         },
         {
-            "key": "3",
+         
             "id": "3",
             "username": "张五",
             "sex": "女",
-            "state": "1",
+            "status": "1",
             "interest": "4",
             "birthday": "2019-12-01",
             "address": "广西宏禄招商大厦",
             "time": "12:00"
         },
         {
-            "key": "4",
+            
             "id": "4",
             "username": "张六",
             "sex": "女",
-            "state": "1",
+            "status": "2",
             "interest": "3",
             "birthday": "2019-12-01",
             "address": "广西宏禄招商大厦",

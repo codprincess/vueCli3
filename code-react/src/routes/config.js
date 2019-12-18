@@ -28,7 +28,8 @@ const menuList = [
         icon: 'bars',
         key: '/basictable',
         subs:[
-            { key: '/basictable/BasicTable', title: '基础表格', icon: '' }
+            { key: '/basictable/BasicTable', title: '基础表格', icon: '' },
+            { key: '/basictable/highTable', title: '高级表格', icon: '' }
         ]
     },
     {
