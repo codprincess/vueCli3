@@ -33,13 +33,13 @@ const menuList = [
         ]
     },
     {
-        title: '导航组件',
+        title: '表单',
         icon: 'bars',
-        key: '/home/navigation',
+        key: '/form',
         subs: [
-            { key: '/home/navigation/dropdown', title: '下拉菜单', icon: '' },
-            { key: '/home/navigation/menu', title: '导航菜单', icon: '' },
-            { key: '/home/navigation/steps', title: '步骤条', icon: '' },
+            { key: '/form/register', title: '注册表单', icon: '' },
+            // { key: '/home/navigation/menu', title: '导航菜单', icon: '' },
+            // { key: '/home/navigation/steps', title: '步骤条', icon: '' },
         ]
     },
     {

@@ -15,6 +15,7 @@ import Messages from '../pages/general/messages'
 import Drag from '../pages/general/draggable'
 import BasicTable from '../pages/basictable/BasicTable'
 import HighTable from '../pages/basictable/highTable'
+import Register from '../pages/form/register'
 class IRouter extends Component {
     render() {
         return (
@@ -37,6 +38,7 @@ class IRouter extends Component {
                                 <Route path="/general/draggable" component={Drag}></Route>
                                 <Route path="/basictable/BasicTable" component={BasicTable}></Route>
                                 <Route path="/basictable/highTable" component={HighTable}></Route>
+                                <Route path="/form/register" component={Register}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>
