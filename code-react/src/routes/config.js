@@ -38,8 +38,7 @@ const menuList = [
         key: '/form',
         subs: [
             { key: '/form/register', title: '注册表单', icon: '' },
-            // { key: '/home/navigation/menu', title: '导航菜单', icon: '' },
-            // { key: '/home/navigation/steps', title: '步骤条', icon: '' },
+            { key: '/form/login', title: '登录表单', icon: '' },
         ]
     },
     {
