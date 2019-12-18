@@ -24,7 +24,8 @@ const Option = Select.Option;
 const TextArea = Input.TextArea;
 class Register extends Component {
     state={
-        loading:false
+        loading:false,
+        fileList: []
     }
     handleSubmit=()=>{
         let userInfo = this.props.form.getFieldsValue();
@@ -183,10 +184,10 @@ class Register extends Component {
                         <FormItem label="是否已婚" {...formItemLayout}>
                             {
                                 getFieldDecorator('isMarried',{
-                                    valuePropName: 'checked',
-                                    initialValue: true
+                                    initialValue: true,
+                                    valuePropName: 'checked'
                                 })(
-                                    <Switch></Switch>
+                                    <Switch />
                                 )
                             }
                         </FormItem>
@@ -208,7 +209,7 @@ class Register extends Component {
                                     initialValue:"南宁帝王大厦"
                                 })(
                                     <TextArea
-                                        autosize={rowObject}
+                                        autoSize={rowObject}
                                     ></TextArea>
                                 )
                             }
@@ -224,7 +225,9 @@ class Register extends Component {
 
                         <FormItem label="头像" {...formItemLayout} >
                             {
-                                getFieldDecorator('imageUrl')(
+                                getFieldDecorator('imageUrl',{
+                                    valuePropName: 'fileList'
+                                })(
                                     <Upload
                                         name="avatar"
                                         listType="picture-card"
@@ -242,7 +245,10 @@ class Register extends Component {
 
                         <FormItem {...offsetLayout}>
                             {
-                                getFieldDecorator('userImg')(
+                                getFieldDecorator('userImg',{
+                                    initialValue: true,
+                                    valuePropName: 'checked'
+                                })(
                                     <Checkbox>我已阅读过<a href="#">协议</a></Checkbox>
                                 )
                             }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Table, Modal, Button, Empty, ConfigProvider, Icon} from 'antd'
+import { Card, Table, Modal, Button, ConfigProvider, Icon} from 'antd'
 //import { Empty } from 'antd';
 import { _getList } from '../../axios/api'
 const customizeRenderEmpty = () => (
@@ -35,7 +35,7 @@ class BasicTable extends Component {
         let selectKey = [index];
         Modal.info({
             title: '信息',
-            content: `用户名：${record.username},用户爱好：${record.interest == '3' ? '踢足球' :'麦霸'}`
+            content: `用户名：${record.username},用户爱好：${record.interest === '3' ? '踢足球' :'麦霸'}`
         })
         this.setState({
             selectedRowKeys: selectKey,
@@ -94,7 +94,7 @@ class BasicTable extends Component {
                 key: 'sex',
                 dataIndex: 'sex',
                 render(sex) {
-                    return sex == 1 ? '男' : '女'
+                    return sex === 1 ? '男' : '女'
                 }
             },
             {
@@ -176,7 +176,7 @@ class BasicTable extends Component {
             }
         }
         // const emptyText = '暂无数据'
-        const { customize } = this.state;
+        // const { customize } = this.state;
         return (
 
             <div>

@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react'
 import BreadcrumbItems from '../../components/breadcrumbitem/BreadcrumbItems'
-import { Row, Col, Card, Spin, Button, Modal, Icon } from 'antd'
+import { Row, Col, Card, Button, Modal } from 'antd'
 const confirm = Modal.confirm;
 class Modals extends Component {
     state = { 

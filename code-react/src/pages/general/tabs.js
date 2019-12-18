@@ -48,11 +48,11 @@ class TabsR extends Component {
     
     handleTabsChange=(e)=>{
        // console.log('55555',e)
-        if(e == 1){
+        if(e === 1){
            this.setState({
                itemList: this.state.itemList2
            })
-        }else if(e==2){
+        }else if(e===2){
             this.setState({
                 itemList: this.state.itemList
             })
@@ -92,12 +92,12 @@ class TabsR extends Component {
         let { activeKey } = this.state;
         let lastIndex;
         this.state.panes.forEach((pane, i) => {
-            if (pane.key === targetKey) {
+            if (pane.key == targetKey) {
                 lastIndex = i - 1;
             }
         });
         const panes = this.state.panes.filter(pane => pane.key !== targetKey);
-        if (panes.length && activeKey === targetKey) {
+        if (panes.length && activeKey == targetKey) {
             if (lastIndex >= 0) {
                 activeKey = panes[lastIndex].key;
             } else {

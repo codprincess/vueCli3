@@ -3,9 +3,9 @@
  */
 import React, { Component } from 'react';
 // import screenfull from 'screenfull';
-import SiderHeader from './SiderHeader';
-import { Menu, Icon, Layout, Badge, Popover } from 'antd';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+// import SiderHeader from './SiderHeader';
+import { Menu, Icon, Layout, Badge } from 'antd';
+// import { withRouter, RouteComponentProps } from 'react-router-dom';
 import './header.less'
 import avatar from '../../asset/img/ava.jpg'
 const { Header } = Layout;

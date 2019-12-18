@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card, Table} from 'antd'
 import { _getList } from '../../axios/api'
 import './style.css';
-import mystyle from './index.css';
+// import mystyle from './index.css';
 class HighTable extends Component {
     
     state = {
@@ -120,7 +120,7 @@ class HighTable extends Component {
                 key: 'sex',
                 dataIndex: 'sex',
                 render(sex) {
-                    return sex == 1 ? '男' : '女'
+                    return sex === 1 ? '男' : '女'
                 }
             },
             {
@@ -196,7 +196,7 @@ class HighTable extends Component {
                 
                 render: record =>(
                     // {record}
-                    <div className={record == '胡彦斌' ? "test" :"myblue"}>{record}</div>
+                    <div className={record === '胡彦斌' ? "test" :"myblue"}>{record}</div>
                 )
                    
             },
@@ -215,7 +215,7 @@ class HighTable extends Component {
                 title: '住址',
                 dataIndex: 'address',
                 key: 'address',
-                render: record => <span className={record == '西湖区湖底公园1号' ? "test" : "mygreen"}>{record}</span>,
+                render: record => <span className={record === '西湖区湖底公园1号' ? "test" : "mygreen"}>{record}</span>,
             },
         ];
 
