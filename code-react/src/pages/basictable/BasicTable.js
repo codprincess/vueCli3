@@ -24,7 +24,7 @@ class BasicTable extends Component {
         this.setState({
             dataSource:res.data
         })
-        console.log(res.data)
+        console.log('请求数据',res.data)
     }
     componentWillMount(){
         this.getList()
@@ -183,6 +183,7 @@ class BasicTable extends Component {
                 <ConfigProvider renderEmpty={customizeRenderEmpty}>
                 <Card>
                     <Table
+                        rowKey={record => record.id}
                         bordered
                         columns={columns}
                         dataSource={this.state.dataSource}
@@ -195,6 +196,7 @@ class BasicTable extends Component {
                         <Button onClick={this.onDelete}>删除</Button>
                     </div>
                     <Table
+                            rowKey={record => record.id}
                         bordered
                         rowSelection={rowSelection}
                         onRow={(record, index) => {
@@ -204,7 +206,7 @@ class BasicTable extends Component {
                                 }
                             };
                         }}
-                        rowKey={(record, index) => index}
+                        // rowKey={(record, index) => index}
                         columns={columns}
                         dataSource={this.state.dataSource}
                         pagination={false}
@@ -217,6 +219,7 @@ class BasicTable extends Component {
                         <Button onClick={this.handleDelete}>删除</Button>
                     </div>
                     <Table
+                            rowKey={record => record.id}
                         bordered
                         rowSelection={rowCheckSelection}
                         columns={columns}
@@ -230,6 +233,7 @@ class BasicTable extends Component {
                     </div>
                     
                         <Table
+                            rowKey={record => record.id}
                             // locale={'无数据'}
                             // empty-text="无数据"
                             bordered
