@@ -43,45 +43,20 @@ const menuList = [
             { key: '/form/testForm', title: '测试表单', icon: '' }
         ]
     },
+   
     {
-        title: '输入组件',
-        icon: 'edit',
-        key: '/home/entry',
-        subs: [
-            {
-                key: '/home/entry/form',
-                title: '表单',
-                icon: '',
-                subs: [
-                    { key: '/home/entry/form/basic-form', title: '基础表单', icon: '' },
-                    { key: '/home/entry/form/step-form', title: '分步表单', icon: '' }
-                ]
-            },
-            { key: '/home/entry/upload', title: '上传', icon: '' },
-        ]
-    },
-    {
-        title: '显示组件',
+        title: '用户管理',
         icon: 'desktop',
-        key: '/home/display',
+        key: '/user',
         subs: [
-            { key: '/home/display/carousel', title: '轮播图', icon: '' },
-            { key: '/home/display/collapse', title: '折叠面板', icon: '' },
-            { key: '/home/display/list', title: '列表', icon: '' },
-            { key: '/home/display/table', title: '表格', icon: '' },
-            { key: '/home/display/tabs', title: '标签页', icon: '', },
+            { key: '/user/user', title: '普通管理页面', icon: '' },
+            // { key: '/home/display/collapse', title: '折叠面板', icon: '' },
+            // { key: '/home/display/list', title: '列表', icon: '' },
+            // { key: '/home/display/table', title: '表格', icon: '' },
+            // { key: '/home/display/tabs', title: '标签页', icon: '', },
         ]
     },
-    {
-        title: '反馈组件',
-        icon: 'message',
-        key: '/home/feedback',
-        subs: [
-            { key: '/home/feedback/modal', title: '对话框', icon: '', },
-            { key: '/home/feedback/notification', title: '通知提醒框', icon: '' },
-            { key: '/home/feedback/spin', title: '加载中', icon: '', }
-        ]
-    },
+  
     {
         title: '其它',
         icon: 'bulb',
