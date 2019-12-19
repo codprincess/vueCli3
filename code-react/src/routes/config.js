@@ -39,7 +39,8 @@ const menuList = [
         subs: [
             { key: '/form/register', title: '注册表单', icon: '' },
             { key: '/form/login', title: '登录表单', icon: '' },
-            { key:'/form/stepForm',title:'分步表单',icon:''}
+            { key:'/form/stepForm',title:'分步表单',icon:''},
+            { key: '/form/testForm', title: '测试表单', icon: '' }
         ]
     },
     {

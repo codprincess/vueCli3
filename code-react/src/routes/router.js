@@ -18,6 +18,7 @@ import HighTable from '../pages/basictable/highTable'
 import Register from '../pages/form/register'
 import Logins from '../pages/form/login'
 import StepForm from '../pages/form/stepForm'
+import TestForm from '../pages/form/testForm'
 class IRouter extends Component {
     render() {
         return (
@@ -43,6 +44,7 @@ class IRouter extends Component {
                                 <Route path="/form/register" component={Register}></Route>
                                 <Route path="/form/login" component={Logins}></Route>
                                 <Route path="/form/stepForm" component={StepForm}></Route>
+                                <Route path="/form/testForm" component={TestForm}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>
