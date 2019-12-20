@@ -58,17 +58,11 @@ const menuList = [
     },
   
     {
-        title: '其它',
+        title: '城市管理',
         icon: 'bulb',
-        key: '/home/other',
+        key: '/city',
         subs: [
-            { key: '/home/other/animation', title: '动画', icon: '', },
-            { key: '/home/other/gallery', title: '画廊', icon: '', },
-            { key: '/home/other/draft', title: '富文本', icon: '' },
-            { key: '/home/other/chart', title: '图表', icon: '' },
-            { key: '/home/other/loading', title: '加载动画', icon: '' },
-            { key: '/home/other/404', title: '404', icon: '' },
-            { key: '/home/other/springText', title: '弹性文字', icon: '' },
+            { key: '/city/city', title: '城市管理', icon: '' }
         ]
     },
     {

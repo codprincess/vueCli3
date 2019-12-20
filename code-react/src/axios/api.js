@@ -7,7 +7,16 @@ import service from './request'
 //     return service.get('/mock.json', data)
 // }
 
+const params = {
+    page:1
+}
+
 //获取普通表格数据
 export function _getList(data){
     return service.get('/mocks/table1.json',data)
+}
+
+//获取城市数据
+export function requestList(data){
+    return service.get('/open_city',data)
 }
