@@ -49,8 +49,8 @@ const menuList = [
         icon: 'desktop',
         key: '/user',
         subs: [
-            { key: '/user/user', title: '普通管理页面', icon: '' },
-            // { key: '/home/display/collapse', title: '折叠面板', icon: '' },
+            { key: '/user/user', title: '普通页面', icon: '' },
+            { key: '/user/user2', title: '用户管理', icon: '' },
             // { key: '/home/display/list', title: '列表', icon: '' },
             // { key: '/home/display/table', title: '表格', icon: '' },
             // { key: '/home/display/tabs', title: '标签页', icon: '', },

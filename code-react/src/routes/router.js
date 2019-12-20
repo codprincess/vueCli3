@@ -20,6 +20,7 @@ import Logins from '../pages/form/login'
 import StepForm from '../pages/form/stepForm'
 import TestForm from '../pages/form/testForm'
 import User from '../pages/user/user'
+import User2 from '../pages/user/user2'
 class IRouter extends Component {
     render() {
         return (
@@ -47,6 +48,7 @@ class IRouter extends Component {
                                 <Route path="/form/stepForm" component={StepForm}></Route>
                                 <Route path="/form/testForm" component={TestForm}></Route>
                                 <Route path="/user/user" component={User}></Route>
+                                <Route path="/user/user2" component={User2}></Route>
                                 <Redirect to="/home" />
                             </Switch>
                         </Admin>

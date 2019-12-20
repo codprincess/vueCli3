@@ -12,6 +12,7 @@ class User extends Component {
         dataSource: [],
         selectedRowKeys: [],
         selectedRows: [],
+        visible: false
     }
     async getList() {
         const res = await _getList()
@@ -50,10 +51,7 @@ class User extends Component {
             })
         }else if(type === 'delete'){
             if(!item){
-                Modal.info({
-                    title: '信息',
-                    content: '请选择一个用户'
-                })
+                message.error('请先选择一个用户O(∩_∩)O哈哈~')
                 return;
             }
             Modal.confirm({
@@ -81,43 +79,37 @@ class User extends Component {
 
     //删除
     handleDelete = () => {
-        //获取列表数据
-        // console.log('直接获取下标', this.state.selectedRowKeys)
-        // if (this.state.selectedRowKeys.length > 0) {
-        //     const dataSource = [...this.state.dataSource]
-        //     dataSource.splice(this.state.selectedRows, this.state.selectedRows.length)
-        //     this.setState({ dataSource })
-        // }
-
-
-        if (!this.state.selectedRowKeys.length >0) {
-            Modal.info({
-                title: '信息',
-                content: '请选择一个用户'
-            })
+        console.log('33333', this.state.selectedRowKeys.length)
+        if (this.state.selectedRowKeys.length<=0) {
+            message.error('请先选择一个用户O(∩_∩)O哈哈~');
             return;
+        }else{
+            this.setState({
+                visible: true,
+            });
         }
-        Modal.confirm({
-            text: '确定要删除此用户吗？',
-            // onOk: () => {
-            //     axios.ajax({
-            //         url: '/user/delete',
-            //         data: {
-            //             params: {
-            //                 id: item.id
-            //             }
-            //         }
-            //     }).then((res) => {
-            //         if (res.code == 0) {
-            //             this.setState({
-            //                 isVisible: false
-            //             })
-            //             this.getList();
-            //         }
-            //     })
-            // }
-        })
+        
     }
+
+    //取消
+    handleCancel=()=>{
+        this.setState({
+            visible: false,
+        });
+    }
+
+    //删除action
+    deleteAction=()=>{
+        if (this.state.selectedRowKeys.length > 0) {
+            const dataSource = [...this.state.dataSource]
+            dataSource.splice(this.state.selectedRows, this.state.selectedRows.length)
+            this.setState({ 
+                dataSource,
+                visible: false,
+             })
+        }
+    }
+
     render() {
         const columns = [{
             title: 'id',
@@ -212,6 +204,20 @@ class User extends Component {
                        
                     </Table>
                 </div>
+                {/* 删除确认框 */}
+               <div>
+                    <Modal
+                        title="删除确认框"
+                        visible={this.state.visible}
+                        onOk={this.deleteAction}
+                        onCancel={this.handleCancel}
+                        okText="确定"
+                        cancelText="取消"
+                        width="300px"
+                    >
+                        <p>您确认要删除该用户吗?</p>
+                    </Modal>
+               </div>
             </div>
         )
     }
