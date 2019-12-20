@@ -46,7 +46,7 @@ class Order extends Component {
     ]
 
     componentDidMount() {
-        this.requestList()
+       // this.requestList()
     }
 
     //获取查询表单数据
@@ -157,8 +157,6 @@ class Order extends Component {
             type: 'radio',
             selectedRowKeys
         }
-
-
 
         return (
             <div>

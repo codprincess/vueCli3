@@ -4,7 +4,16 @@
 import React, { Component } from 'react'
 import { _getList } from '../../axios/api'
 import ETable from '../../components/ETable'
-import { Card, Button, Table, Form, Input, Checkbox, Select, Radio, Icon, message, Modal, DatePicker } from 'antd'
+import {
+    Card,
+    Button, 
+    Form, 
+    Input, 
+    Select, 
+    Radio, 
+    Modal, 
+    DatePicker 
+} from 'antd'
 import Utils from '../../utils/utils'
 import Moment from 'moment'
 import "./index.less"

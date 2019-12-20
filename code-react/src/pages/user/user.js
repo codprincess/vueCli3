@@ -2,11 +2,11 @@
  * Created by 小公主 on 2019/12/19.
  */
 import React, { Component } from 'react'
-import { Card, Button, Table, Form, Input, Checkbox, Select, Radio, Icon, message, Modal, DatePicker } from 'antd'
+import { Card, Button, Table, message, Modal } from 'antd'
 import { _getList } from '../../axios/api'
-const FormItem = Form.Item;
-const Option = Select.Option;
-const RadioGroup = Radio.Group;
+// const FormItem = Form.Item;
+// const Option = Select.Option;
+// const RadioGroup = Radio.Group;
 class User extends Component {
     state = {
         dataSource: [],
