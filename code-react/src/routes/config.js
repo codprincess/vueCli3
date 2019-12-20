@@ -66,6 +66,15 @@ const menuList = [
         ]
     },
     {
+        title: '订单管理',
+        icon: 'bulb',
+        key: '/order',
+        subs: [
+            { key: '/order/index', title: '城市管理', icon: '' }
+        ]
+    },
+
+    {
         title: '关于',
         icon: 'info-circle-o',
         key: '/home/about'
