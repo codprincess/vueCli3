@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import app from './app'
 import user from './user'
+import products from './products'
+import cart from './cart'
 Vue.use(Vuex);
 const store = new Vuex.Store({
     // //状态
@@ -44,8 +46,11 @@ const store = new Vuex.Store({
 
     //整理store合集
     modules:{
+      //  namespaced: true,
         app,
-        user
+        user,
+        products,
+        cart
     }
 })
 
