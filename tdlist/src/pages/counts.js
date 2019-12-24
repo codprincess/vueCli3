@@ -6,12 +6,14 @@ import {connect} from 'react-redux'
 import Counter from '../components/Counter'
 import { incrementAction, descrementAction} from '../store/counter/actionCreator'
 
+//对比vuex的mapState
 const mapStateToProps = state=>{
     return {
         count: state.counter.count
     }
 }
 
+//对比vuex的mapAction
 const mapDispatchToProps = dispatch=>{
     return {
         incrementClick:()=>{

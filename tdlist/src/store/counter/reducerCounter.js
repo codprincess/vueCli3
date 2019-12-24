@@ -5,6 +5,7 @@ const defaultState = {
     count:0
 }
 
+//在reducer中处理业务逻辑,对比vuex的mutations或者action
 export default function counterReducer(state = defaultState,action){
     console.log(state,action)
     switch(action.type){
