@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 import { Input, Button ,List} from 'antd'
 import store from './store/index'
-import {CHANGE_INPUT,ADD_ITEM,DELETE_ITEM} from './store/actionTypes'
-import { changeInputAction, addItemAction, deleteItemAction, getListAction, getTodoList} from './store/actionCreators'
+// import {CHANGE_INPUT,ADD_ITEM,DELETE_ITEM} from './store/todoList/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getListAction, getTodoList } from './store/todoList/actionCreators'
 import TodoListUI from './TodoListUI'
 import {connect} from 'react-redux'
-// const date = [
-//     '早8点开晨会，分配今天的开发工作',
-//     '早9点和项目经理作开发需求讨论会',
-//     '晚5:30对今日代码进行review'
-// ]
+
 class TodoList extends Component {
     constructor(props){
         super(props)
@@ -19,6 +15,7 @@ class TodoList extends Component {
         this.state = store.getState();
        // console.log(this.state)
        //订阅redux状态
+       //Store 允许使用store.subscribe方法设置监听函数，一旦 State 发生变化，就自动执行这个函数
         store.subscribe(this.storeChange)
     }
 
@@ -74,19 +71,6 @@ class TodoList extends Component {
     // }
     render() {
         return (
-            // <div style={{ margin: '10px' }}>
-            //     <div>
-            //         <Input onChange={this.changeInputValue} placeholder={this.state.inputValue} style={{ width: '250px', marginRight: '10px'}} />
-            //         <Button onClick={this.clickBtn} type="primary">增加</Button>
-            //     </div>
-            //     <div style={{margin:'10px',width:'300px'}}>
-            //         <List
-            //             bordered
-            //             dataSource={this.state.list}
-            //             renderItem={(item,index)=>(<List.Item onClick={this.deleteItem.bind(this,index)}>{item}</List.Item>)}
-            //         ></List>
-            //     </div>
-            // </div>
             <div>
                 <TodoListUI
                     inputValue={this.state.inputValue}
@@ -96,10 +80,10 @@ class TodoList extends Component {
                     deleteItem={this.deleteItem}
                 ></TodoListUI>
 
-                <div>
+                {/* <div>
                     <Input onChange={this.props.changeInputValues} value={this.props.inputValue} style={{ width: '250px', marginRight: '10px'}} />
                     <Button type="primary">增加</Button>
-                </div>
+                </div> */}
             </div>
         )
     }

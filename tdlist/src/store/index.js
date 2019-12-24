@@ -1,3 +1,6 @@
+/**
+ * create by <714195347@qq.com> 小公主
+ */
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducer'

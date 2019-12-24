@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoList from './TodoList'
+// import TodoList from './TodoList'
+import Counts from '../src/pages/counts'
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
 import store from './store'
@@ -12,7 +13,8 @@ import store from './store'
 // )
 ReactDOM.render(
     <Provider store={store}>
-         <TodoList></TodoList>
+        <Counts></Counts>
+       
      </Provider>,
 document.getElementById('root'));
 

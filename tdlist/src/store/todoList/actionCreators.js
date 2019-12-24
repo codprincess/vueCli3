@@ -1,3 +1,6 @@
+/**
+ * create by <714195347@qq.com> 小公主
+ */
 //业务逻辑文件
 import axios from 'axios'
 import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST} from './actionTypes'
