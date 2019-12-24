@@ -4,9 +4,11 @@
 import { combineReducers } from 'redux'
 import reducerTodo from './todoList/reducerTodo'
 import counter from './counter/reducerCounter'
+import reducerPrice from './prices/reducerPrice'
 const reducer = combineReducers({
     reducerTodo,
-    counter
+    counter,
+    reducerPrice
 })
 
 export default reducer
