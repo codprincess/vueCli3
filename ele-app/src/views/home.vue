@@ -40,16 +40,22 @@
     <!--商家推荐-->
     <div class="shoplist-title">推荐商家</div>
     <!--导航-->
+    <FilterView :filterData="filterData" @searchFixed="showFilterView" @update="update"></FilterView>
     
   </div>
 </template>
 <script>
+import { Swipe, SwipeItem, Loadmore } from "mint-ui";
+import FilterView from "../components/FilterView"
 export default {
     name:"home",
     data(){
       return{
         swipeImgs:[],
-        entries:[]
+        entries:[],
+        filterData:null,
+        showFilter: false,
+        data:null
       }
     },
     computed:{
@@ -67,8 +73,26 @@ export default {
           //console.log('获得的数据',res)
           this.swipeImgs = res.data.swipeImgs;
           this.entries = res.data.entries;
-        })
+        });
+
+        this.$axios("/api/profile/filter").then(res=>{
+          this.filterData = res.data;
+        });
+
+
+      },
+
+      showFilterView(isShow){
+        this.showFilter = isShow;
+      },
+
+      update(condation){
+        this.data = condation
       }
+    },
+
+    components:{
+      FilterView
     }
 }
 </script>
