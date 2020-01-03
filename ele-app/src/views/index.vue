@@ -1,5 +1,6 @@
 <template>
   <div class="index">
+    <router-view></router-view>
     <TabBar :data="tabbarData"></TabBar>
   </div>
 </template>
