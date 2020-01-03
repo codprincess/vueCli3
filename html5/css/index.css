@@ -1,0 +1,185 @@
+.hj-page {
+    position: relative;
+}
+
+.hj-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50px;
+    padding: 0 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #333333;
+    z-index: 99;
+}
+
+.hj-bar .icon,
+.hj-bar .title {
+    font-size: 18px;
+    color: #ffffff;
+
+}
+
+.hj-bar .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    font-weight: 700;
+}
+
+.hj-content {
+    position: relative;
+    z-index: 2;
+    padding: 50px 0 0;
+}
+
+.home-page {}
+
+.home-page-header {
+    padding: 0 1rem 1rem;
+}
+
+.home-page-header>p {
+    line-height: 1rem;
+    font-size: 13px;
+    color: #999999;
+}
+
+.home-page-header .user-info {
+    position: relative;
+    padding: 0 3rem 1rem 0;
+    line-height: 2rem;
+}
+
+.home-page-header .user-info h2 {
+    display: flex;
+    max-width: 70%;
+    font-size: 18px;
+    line-height: 28px;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.home-page-header .user-info h2 a {
+    text-decoration: underline;
+    color: #000000;
+}
+
+.home-page-header .user-info img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+}
+
+.home-page-header .user-info.nologin img {
+    top: -22px;
+}
+
+.home-page-body {
+    padding-bottom: 2rem;
+}
+
+.home-page-body ul {
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.home-page-body li {
+    position: relative;
+    margin-bottom: 2rem;
+    border-radius: 26px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    overflow: hidden;
+    /* border: 1px red solid; */
+}
+
+.home-page-body li.cell1 .icon {
+    position: absolute;
+    top: calc(50% - 80px);
+    left: calc(50% - 80px);
+    width: 160px;
+    animation: rotate 12s 0s infinite;
+    -webkit-transform: rotate(360deg);
+    animation: rotation 3s linear infinite;
+    -moz-animation: rotation 3s linear infinite;
+    -webkit-animation: rotation 3s linear infinite;
+    -o-animation: rotation 3s linear infinite;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.home-page-body li .bg {
+    width: 100%;
+}
+
+.home-page-body li.cell2 {
+    padding: 0 0 .2rem;
+    background-color: #f5f5f5;
+}
+
+.home-page-body li.cell2 .title {
+    background-color: #fff;
+    height: 113px;
+}
+
+.home-page-body li.cell2 .bg {
+    width: 180%;
+    transform: translateX(-2rem);
+    /*animation: move-data-v-66b642ce 30s 0s linear infinite alternate; */
+    -webkit-transform: translateX(-2rem);
+    /*兼容-webkit-引擎浏览器*/
+    -moz-transform: translateX(-2rem);
+    /*兼容-moz-引擎浏览器*/
+    animation: myrotation 30s 0s linear infinite alternate;
+}
+
+@-webkit-keyframes myrotation {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(0px);
+    }
+
+    /* 100% {
+        transform: translateX(-10%) translateY(0px);
+    } */
+
+}
+
+.home-page-body li.cell3 .animate-header .title {
+    width: 100%;
+}
+
+.home-page-body li.cell3 .animate-header .animate-body {
+    position: relative;
+    overflow: hidden;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+}
+
+.hj-sw-content{
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+}
