@@ -5,8 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>个人中心</title>
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/setcss.css">
 </head>
 <body>
-    
+    <div class="hj-page">
+        <!--头部-->
+        <header class="hj-bar">
+            <div class="icon iconfont icon-fanhuitubiao"></div>
+            <h1 class="title">个人中心</h1>
+            <div class="hj-bar-re">
+                <a href="./setuser.html">
+                    <i class="iconfont icon-shezhi"></i>
+                </a>
+            </div>
+        </header>
+        <section class="hj-content">
+            <div class="user-page">
+                <div class="user-page-header">
+                    <div class="info">
+                        <div class="protype">
+                            <p>
+                                <label for="">15296487773</label>
+                                <span class="iconfont icon-bianji"></span>
+                            </p>
+                            <div class="vip">
+                                <!--普通和超级vip根据class变化-->
+                                <span class="bigvip"></span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="./img//avar.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-page-body">
+                    <ul>
+                        <li>
+                            <a href="#record">
+                                <span class="iconfont icon-biaoqianlan-yuyinhecheng"></span>
+                                <label style="flex: 1;">合成记录</label>
+                                <i class="iconfont icon-fanhuitubiao"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#record">
+                                <span class="iconfont icon-biaoqianlan-yuyinhecheng"></span>
+                                <label style="flex: 1;">钱包金额</label>
+                                <i class="iconfont icon-fanhuitubiao"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#record">
+                                <span class="iconfont icon-biaoqianlan-yuyinhecheng"></span>
+                                <label style="flex: 1;">下载记录</label>
+                                <i class="iconfont icon-fanhuitubiao"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <footer class="user-page-footer">
+            <button>退出登录</button>
+        </footer>
+    </div>
+
 </body>
 </html>
