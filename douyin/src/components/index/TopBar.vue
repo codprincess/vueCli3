@@ -30,6 +30,7 @@ export default {
 </script>
 <style scoped>
     .top-bar{
+        position: fixed;
         width: 100%;
         height: 50px;
         display: flex;

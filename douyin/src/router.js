@@ -16,7 +16,14 @@ const router = new Router({
                 {
                     path:'/',
                     name:'index',
-                    component:()=>import('./views/index/Index.vue')
+                    component:()=>import('./views/index/Index.vue'),
+                    children:[
+                        {
+                            path:'/',
+                            name:'videolist',
+                            component:()=>import('./components/index/videoList.vue')
+                        }
+                    ]
                 },
                 {
                     path:'/follow',

@@ -5,10 +5,14 @@ import App from './App.vue'
 // import 'vant/lib/index.css';
 //导入路由
 import router from './router'
+//挂载轮播图
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 // Vue.use(Vant);
 //引入阿里图标库
 import './static/iconfont/iconfont.css'
 Vue.config.productionTip = false
+Vue.use(VueAwesomeSwiper)
 
 new Vue({
   router,
