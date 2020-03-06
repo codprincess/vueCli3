@@ -7,7 +7,9 @@
             <router-link to="/follow" tag="span" :class="tabIndex==1?'active':''">关注</router-link>
         </div>
         <div class="item" @click="changeTab(2)">
-            <router-link to="/index" tag="span" :class="tabIndex==2?'active':''" >+</router-link>
+            <router-link to="/index" tag="span" :class="tabIndex==2?'active':''" >
+                <img src="../../static/image/dy-btn.png" alt="" class="dy-btn">
+            </router-link>
         </div>
         <div class="item"  @click="changeTab(3)">
             <router-link to="/index" tag="span" :class="tabIndex==3?'active':''">消息</router-link>
@@ -35,8 +37,8 @@ export default {
 </script>
 <style scoped>
  .tar-bar{
-     height: 44px;
-     line-height: 44px;
+     height: 50px;
+     line-height: 50px;
      width: 100%;
      background: rgba(0, 0, 0, 0.85);
      position: fixed;
@@ -50,6 +52,10 @@ export default {
  .tar-bar .item{
      flex: 1;
      text-align: center;
+ }
+ .dy-btn{
+     width: 40px;
+     height: 30px;
  }
  .tar-bar .item span{
      padding: 10px 0;
