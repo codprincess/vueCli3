@@ -5,9 +5,25 @@ import Home from './views/Home'
 const router = new Router({
     routes:[
         {
+            path:'/',
+            redirect:'home'
+        },
+        {
             path:'/home',
             name:'home',
-            component: Home
+            component: Home,
+            children:[
+                {
+                    path:'/index',
+                    name:'index',
+                    component:()=>import('./views/index/Index.vue')
+                },
+                {
+                    path:'/follow',
+                    name:'follow',
+                    component:()=>import('./views/follow/Follow.vue')
+                }
+            ]
         }
     ]
 })
