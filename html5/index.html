@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/setcss.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+    <div class="hj-page">
+        <!--头部-->
+        <header class="hj-bar">
+            <div class="icon iconfont icon-fanhuitubiao"></div>
+            <h1 class="title">TT首页</h1>
+        </header>
+        <section class="hj-content">
+            <div class="home-page">
+                <div class="home-page-header">
+                    <p>欢迎使用</p>
+                    <div class="user-info nologin" style="display: none;">
+                        <h2><a href="./login.html">点我登录</a></h2>
+                        <img src="./img/avar.png" alt="">
+                    </div>
+                    <div class="user-info">
+                        <h2>15296487773</h2>
+                        <span></span>
+                        <img src="./img/avar.png" alt="">
+                    </div>
+                </div>
+
+                <div class="home-page-body">
+                    <ul>
+                        <li class="cell1">
+                            <a href="#">
+                                <img src="./img/efd.png" alt="" class="icon">
+                                <img src="./img/bg.png" alt="" class="bg">
+                            </a>
+                        </li>
+                        <li class="cell2">
+                            <a href="#">
+                                <img src="./img/cell2.png" alt="" class="title">
+                                <img src="./img/cell2bg.png" alt="" class="bg">
+                            </a>
+                        </li>
+                        <li class="cell3" style="height: 470px;">
+                            <a href="#">
+                                <div class="animate-header">
+                                    <img src="./img/cell3.png" alt="" class="title">
+                                </div>
+                                <div class="animate-body">
+                                    <section class="hj-sw-content">
+                                        <div class="swiper-container gallery-top">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide hj-slide">
+                                                    <img src="./img/theme1.png" alt="" class="gpic">
+                                                </div>
+                                                <div class="swiper-slide hj-slide">
+                                                    <img src="./img/theme2.png" alt="" class="gpic">
+                                                </div>
+                                                <div class="swiper-slide hj-slide">
+                                                    <img src="./img/theme4.png" alt="" class="gpic">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-container gallery-thumbs">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide hj-slide-th">
+                                                    <img src="./img/stheme1.png" alt="" class="thpic">
+                                                </div>
+                                                <div class="swiper-slide hj-slide-th">
+                                                    <img src="./img/stheme2.png" alt="" class="thpic">
+                                                </div>
+                                                <div class="swiper-slide hj-slide-th" >
+                                                    <img src="./img/stheme3.png" alt="" class="thpic">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <footer class="hj-footer">
+            <img src="./img/logo_footer.png" alt="" style="width: 100%;">
+        </footer>
+    </div>
+    <script src="./js/swiper.min.js"></script>
+    <script>
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            autoplay: true,
+            // speed: 300,
+            spaceBetween: 3,
+            slidesPerView: 3,
+            loop: true,
+            freeMode: true,
+            loopedSlides: 3,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+           autoplay: true,
+            centeredSlides: true,
+            spaceBetween: 3,
+            loop: true,
+            loopedSlides: 3,
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+        });
+    </script>
+</body>
+</html>

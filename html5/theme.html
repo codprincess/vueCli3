@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>主题页面</title>
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/theme.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="liui-page">
+            <header class="liui-bar liui-pos-f">
+                <div class="icon iconfont icon-fanhuitubiao" @click="gotoHome"></div>
+                <h1 class="title">主题展示</h1>
+            </header>
+            <section class="liui-content">
+                <div class="tts-page theme-page liui-pos-f" :style="'background-image:url('+fullBg+');'">
+                    <div class="tts-page-header">
+                        <!-- <p>主题展示</p> -->
+                        <h2>让你体验“身临其境”</h2>
+                    </div>
+                    <!-- <div class="share-cont" @click="share"><img src="theme/share.png"></div> -->
+                    <div class="theme-page-body">
+                        <div class="theme-name"><span>{{themeName}}</span><label></label></div>
+                        <div class="theme-list">
+                            <ul ref="themeList">
+                                <li ref="themeItem" v-for="(item,index) in themeList" @click="chooseThemeItem(item)"
+                                    :class="{ active: item.id == currThemeId }">
+                                    <div class="info">
+                                        <h3 class="txt-ellipsis">{{item.name}}</h3>
+                                        <p>已有{{item.plays}}人收听</p>
+                                    </div>
+                                    <div class="img">
+                                        <img :src="item.thumb_img_domain">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="theme-player" :class="{ playing:isPlaying }">
+                            <aplayer ref="player" theme="pic" @play="onPlay" @pause="onPause" :music="aplayerList[0]" />
+                        </div>
+                        <div class="theme-player-icon"></div>
+                    </div>
+                    <div class="gradient-bg"></div>
+                    <div class="gradient-bg2"></div>
+                </div>
+            </section>
+            <footer class="fixed-bottom-nav">
+                <ul>
+                    <li class="item">
+                        <router-link to="/tts" @click="gotoUrl('tts')">
+                            <div class="iconfont icon-biaoqianlan-yuyinhecheng1"></div>
+                            <span>语音合成</span>
+                        </router-link>
+                    </li>
+                    <li class="item">
+                        <router-link to="/compare" @click="gotoUrl('compare')">
+                            <div class="iconfont icon-biaoqianlan-TTSduibi1"></div>
+                            <span>TTS对比</span>
+                        </router-link>
+                    </li>
+                    <li class="item active">
+                        <router-link to="/theme">
+                            <div class="iconfont icon-biaoqianlan-zhutizhanshi1"></div>
+                            <span>主题展示</span>
+                        </router-link>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+        </app>
+        <script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+        <script>
+            // init vConsole
+            var vConsole = new VConsole();
+        </script>
+        <script src="https://lib.baomitu.com/vue/2.5.20/vue.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/vue-aplayer"></script>
+        <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+        <script type="text/javascript">
+            const GOBAL_BASE = (function () {
+                let url = [];
+                const origin = window.location.origin;
+                if (origin == 'https://www.sounddat.heard-gl.com') {
+                    url[0] = 'https://api.sounddat.heard-gl.com/';
+                } else if (origin == 'https://www.sounddat.com') {
+                    url[0] = 'https://api.sounddat.com/';
+                }
+                return url;
+            })();
+            Vue.component('aplayer', VueAPlayer)
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        fullBg: '',
+                        thumb_img: '',
+                        themeName: '默认标题',
+                        currThemeId: '',
+                        isPlaying: false,
+                        themeList: [],
+                        aplayerList: [
+                            {
+                                title: '',
+                                artist: ' ',
+                                src: 'https://www.sounddat.heard-gl.com/demo.mp3',
+                                pic: ''
+                            }
+                        ]
+                    }
+                },
+                created() {
+                    let _this = this;
+                    const id = window.location.href.split('?id=')[1];
+                    console.warn(id)
+                    axios.post(GOBAL_BASE[0] + 'Ttstheme/getList', { "page": "1", "pagesize": "99" }).then(res => {
+                        let data = res.data;
+                        if (data.code == 1) {
+                            let themeData = data.data.data;
+                            let aplayer = this.$refs.player;
+                            // 如果存在id，查找其位置并防止在第一位
+                            if (id) {
+                                let currObj = {};
+                                for (let i = 0; i < themeData.length; i++) {
+                                    if (themeData[i].id === parseInt(id)) {
+                                        currObj = themeData[i];
+                                        themeData.splice(i, 1);
+                                        if (currObj) {
+                                            themeData.unshift(currObj)
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                            _this.themeList = themeData;
+                            _this.fullBg = themeData[0].img_domain;
+                            _this.thumb_img = themeData[0].thumb_img_domain;
+                            _this.currThemeId = themeData[0].id;
+                            _this.themeName = themeData[0].name;
+                            _this.$nextTick(() => {
+                                _this.InitTabScroll();
+                                document.addEventListener('WeixinJSBridgeReady', function () { aplayer.load() }, false);
+                                aplayer.audio.src = themeData[0].audio_path_domain;
+                                aplayer.music.title = themeData[0].name;
+                                aplayer.audio.play();
+                            });
+
+
+                            //wx config
+                            axios.post(GOBAL_BASE[0] + 'common/getJssdkConfig', { "url": window.location.href.split('#')[0] }).then(res => {
+                                let data = res.data;
+                                // console.log(data)
+                                if (data.code == 1) {
+                                    wx.config({
+                                        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                                        appId: data.data.appId, // 必填，公众号的唯一标识
+                                        timestamp: data.data.timestamp, // 必填，生成签名的时间戳
+                                        nonceStr: data.data.nonceStr, // 必填，生成签名的随机串
+                                        signature: data.data.signature,// 必填，签名，见附录1
+                                        jsApiList: data.data.jsApiList // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                                    });
+
+
+                                    wx.ready(function () { //通过ready接口处理成功验证
+
+                                        console.info("通过ready接口处理成功验证");
+
+                                        // config信息验证成功后会执行ready方法
+                                        wx.onMenuShareAppMessage({ // 分享给朋友  ,在config里面填写需要使用的JS接口列表，然后这个方法才可以用 
+                                            title: '主题展示-让你体验“身临其境”', // 分享标题
+                                            desc: _this.themeName, // 分享描述
+                                            // link: location.href.split('#')[0] + '#/share?id=' + _this.currThemeId, // 分享链接
+                                            link: window.location.href.split('#')[0], // 分享链接
+                                            imgUrl: _this.thumb_img, // 分享图标
+                                            type: '', // 分享类型,music、video或link，不填默认为link
+                                            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                            success: function () {
+                                                console.info("分享成功");
+                                            },
+                                            cancel: function () {
+                                                console.info("分享失败");
+                                            }
+                                        });
+                                        //分享到朋友圈
+                                        wx.onMenuShareTimeline({
+                                            title: '主题展示-让你体验“身临其境”', // 分享标题
+                                            link: window.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                            imgUrl: _this.thumb_img, // 分享图标
+                                            success: function (res) {
+                                                console.log("分享成功!")
+                                            },
+                                            cancel: function (res) {
+                                                // 用户取消分享后执行的回调函数
+                                                console.log("取消分享到朋友圈返回的信息为:", res);
+                                            }
+                                        });
+                                    });
+                                    wx.error(function (res) {//通过error接口处理失败验证
+                                        console.warn(res);
+                                        console.log('没有通过ready接口处理成功验证')
+                                    });
+                                }
+                            }).catch(err => {
+                                console.log(err);
+                            });
+
+
+
+
+                            axios.post(GOBAL_BASE[0] + 'Ttstheme/getContent', { "theme_id": themeData[0].id }).then(res => {
+                                let data = res.data;
+                                if (data.code == 1) {
+                                    _this.themeList[0].plays += 1;
+                                }
+                            }).catch(err => {
+                                console.log(err);
+                            });
+                        }
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                },
+                methods: {
+                    gotoHome() {
+                        window.location = window.location.origin + '/mobile/index.html#/';
+                    },
+                    gotoUrl(str) {
+                        window.location = window.location.origin + '/mobile/index.html#/' + str;
+                    },
+                    InitTabScroll() {
+                        let width = 0;
+                        for (let i = 0; i < this.themeList.length; i++) {
+                            width += this.$refs.themeItem[0].getBoundingClientRect().width;
+                        }
+                        width += 70;
+                        this.$refs.themeList.style.width = width + 'px';
+                    },
+                    onPlay() {
+                        this.isPlaying = true;
+                    },
+                    onPause() {
+                        this.isPlaying = false;
+                    },
+                    chooseThemeItem(item) {
+                        window.location = window.location.href.split('?id')[0] + '?id=' + item.id;
+                    },
+                    share() {
+                        const _this = this;
+                        WeixinJSBridge.invoke('sendAppMessage', {
+                            title: '主题展示-让你体验“身临其境”', // 分享标题
+                            desc: _this.themeName, // 分享描述
+                            link: window.location.href.split('#')[0], // 分享链接
+                            imgUrl: _this.thumb_img, // 分享图标
+                            type: '', // 分享类型,music、video或link，不填默认为link
+                            dataUrl: ''
+                        });
+                    }
+                }
+            })
+        </script>
+</body>
+
+</html>
