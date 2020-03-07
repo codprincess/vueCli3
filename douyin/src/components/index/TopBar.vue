@@ -37,9 +37,11 @@ export default {
         padding: 20px;
         font-size: 18px;
         box-sizing: border-box;
-        color: #B6B1A8;
+        color: #999;
+        font-weight: 500;
+        z-index: 999;
     }
-    .left{width: 20%;}
+    .left{width: 20%;font-weight: 600;}
     .left .iconfont{ font-size: 24px;}
     .middle{
         justify-items: center;display: flex;width: 60%;

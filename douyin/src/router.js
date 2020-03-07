@@ -14,7 +14,7 @@ const router = new Router({
             component: Home,
             children:[
                 {
-                    path:'/',
+                    path:'/index',
                     name:'index',
                     component:()=>import('./views/index/Index.vue'),
                     children:[

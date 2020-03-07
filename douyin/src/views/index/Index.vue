@@ -15,7 +15,7 @@ export default {
 </script>
 <style scoped>
     .indexwarp{
-        /* background-color: #000000; */
+        background-color: #000000;
         /* position: absolute;
         top: 0;
         bottom: 0;
