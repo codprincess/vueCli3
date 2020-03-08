@@ -1,7 +1,7 @@
 <template>
     <div class="indexwarp">
         <top-bar></top-bar>
-         <router-view />
+        <router-view />
     </div>
 </template>
 <script>
@@ -9,7 +9,7 @@ import TopBar from '../../components/index/TopBar'
 export default {
     name:'index',
     components:{
-        TopBar
+        TopBar,
     }
 }
 </script>

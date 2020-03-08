@@ -2,14 +2,21 @@
 <div id="video-list">
 <swiper :options="swiperOption">
     <!-- 幻灯内容 -->
-    <swiper-slide style="text-align:center">
+    <swiper-slide>
         <video-player  class="video-player vjs-custom-skin"
             ref="videoPlayer"
             :playsinline="true"
             :options="playerOptions"
-        ></video-player>    
+        ></video-player>  
+        <div class="leftwarp">
+            <left-bar></left-bar> 
+        </div>
+        <div class="rightwarp">
+            <right-bar></right-bar> 
+        </div>
     </swiper-slide>    
-    <swiper-slide>
+
+    <!-- <swiper-slide>
          <video-player  class="video-player vjs-custom-skin"
             ref="videoPlayer"
             :playsinline="true"
@@ -17,19 +24,23 @@
         ></video-player>       
     </swiper-slide> 
     <swiper-slide>slide1</swiper-slide>    
-    <swiper-slide>slide2</swiper-slide> 
+    <swiper-slide>slide2</swiper-slide>  -->
 </swiper>
 </div>
 </template>
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
     import { videoPlayer } from 'vue-video-player'
+    import LeftBar from '../../components/index/LeftBar'
+    import RightBar from '../../components/index/RightBar'
     export default{
         name:'videoList',
         components: {
             swiper,          //定义组件
             swiperSlide,
-            videoPlayer
+            videoPlayer,
+            LeftBar,
+            RightBar
         },
         data(){
             return {
@@ -84,7 +95,6 @@
         transform: translate(0, -50%) !important;
         left: 45%;
     }
-
     #video-list .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
         position: absolute;
         top: -9px;
@@ -92,5 +102,21 @@
         width: 100%;
         height: 100%;
     }
+    #video-list .swiper-slide{
+        position: relative;
+    } 
+    .leftwarp{
+        position: absolute;
+        bottom:60px;
+        left: 0;
+        width: 75%;
+    }
+    .rightwarp{
+        position: absolute;
+        right: 0;
+        bottom: 60px;
+        width: 20%;
+    }
+
 
 </style>
