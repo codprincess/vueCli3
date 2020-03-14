@@ -69,7 +69,6 @@ export default {
         top: 44px;
         left: 0;
         right: 0;
-
     }
     .item-icon .iconfont{
         font-size: 36px;

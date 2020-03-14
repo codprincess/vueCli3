@@ -4,7 +4,9 @@
        <div class="left-item"><span>全网最新的vuecli4实战抖音app</span></div>
        <div class="left-item music-item">
            <span class="iconfont icon-yinfu"></span> 
-           <span class="music-name">特困女程序员原创</span>
+           <div class="music-name">
+               <span data-text="特困女程序员原创">特困女程序员原创</span>
+            </div>
         </div>
     </div>
 </template>
@@ -29,27 +31,36 @@ export default {
     }
     .music-item{
         width: 80%;
-        border: 1px red solid;
-        position: relative;
+        display: flex;
     }
     .icon-yinfu{
         display: block;
     }
     .music-name{
         margin-left: 5px;
-        border: 1px green solid;
-        width: 70%;
-        right: -10%;
-        bottom: 0;
-        position: absolute;     
-        -webkit-animation: scollLeft 5s linear 0s infinite;
+        width: 150px;
+        padding: 2px 0;
+        white-space: nowrap;
+        overflow: hidden;
     }
-     @-webkit-keyframes scollLeft {
+    .music-name span{
+        display: inline-block;
+        /*inline样式不能使用动画*/
+        animation: scroll 5s linear infinite;
+    }
+    /**无缝的条件 */
+    .music-name span::after{
+        content: attr(data-text);
+        margin-left: 30px;
+    }
+     @keyframes scroll {
         from {
-            right: -50%;
+            transform: translateX(0);
         }
+
         to {
-            right: 10%;
+            transform: translateX(calc(-50% - 2em));
+            /*总长的一半再加上margin-left的一半*/
         }
     }
 </style>

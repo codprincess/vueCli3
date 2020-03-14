@@ -12,6 +12,7 @@ import 'swiper/dist/css/swiper.css'
 //引入阿里图标库
 import './static/iconfont/iconfont.css'
 //挂载视频播放器
+import 'vue-video-player/src/custom-theme.css'
 import 'video.js/dist/video-js.css'
 
 Vue.config.productionTip = false

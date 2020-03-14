@@ -1,13 +1,11 @@
 <template>
 <div id="video-list">
 <swiper :options="swiperOption">
-    <!-- 幻灯内容 -->
-    <swiper-slide>
-        <video-player  class="video-player vjs-custom-skin"
-            ref="videoPlayer"
-            :playsinline="true"
-            :options="playerOptions"
-        ></video-player>  
+    <swiper-slide v-for="(item,index) in dataList" :key="index">
+        <div>
+            <!--获取子组件的dom节点-->
+            <videos ref="videos" :videoList="item" :index="index"></videos>
+        </div>
         <div class="leftwarp">
             <left-bar></left-bar> 
         </div>
@@ -15,68 +13,94 @@
             <right-bar></right-bar> 
         </div>
     </swiper-slide>    
-
-    <!-- <swiper-slide>
-         <video-player  class="video-player vjs-custom-skin"
-            ref="videoPlayer"
-            :playsinline="true"
-            :options="playerOptions"
-        ></video-player>       
-    </swiper-slide> 
-    <swiper-slide>slide1</swiper-slide>    
-    <swiper-slide>slide2</swiper-slide>  -->
 </swiper>
 </div>
 </template>
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
-    import { videoPlayer } from 'vue-video-player'
+    import Videos from '../../components/index/Videos'
     import LeftBar from '../../components/index/LeftBar'
     import RightBar from '../../components/index/RightBar'
     export default{
         name:'videoList',
         components: {
-            swiper,          //定义组件
+            swiper,          
             swiperSlide,
-            videoPlayer,
             LeftBar,
-            RightBar
+            RightBar,
+            Videos
         },
         data(){
             return {
+                page:1,
                 swiperOption: {
                     direction:"vertical",
                     grabCursor: true, 
                     setWrapperSize: true, 
-                    autoHeight: true, //自动高度。设置为true时，wrapper和container会随着当前slide的高度而发生变化
+                    autoHeight: true, 
                     slidesPerView: 1,
                     mousewheel: true, 
                     mousewheelControl: true, 
-                    height: window.innerHeight, // 高度设置，占满设备高度
+                    height: window.innerHeight,
                     resistanceRatio: 0, 
                     observeParents: true, 
+                    on:{
+                        tap:()=>{
+                            this.playerAction(this.page-1)
+                        },
+                       slideNextTransitionStart:()=>{
+                           this.page +=1;
+                          // console.log(this.page)
+                           this.nextVideo(this.page-1)
+                        },
+                        slidePrevTransitionEnd:()=>{
+                            if(this.page>1){
+                                this.page -=1;
+                                this.prevVideo(this.page-1)
+                            }
+                          // console.log(this.page)
+                        }
+                    }
                 },
-                playerOptions : {
-                   // playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-                    autoplay: false, //如果true,浏览器准备好时开始回放。
-                    muted: false, // 默认情况下将会消除任何音频。
-                    loop: false, // 导致视频一结束就重新开始。
-                    preload: 'auto', 
-                    fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-                    sources: [
-                        {
-                            src: 'http://video.jishiyoo.com/161b9562c780479c95bbdec1a9fbebcc/8d63913b46634b069e13188b03073c09-d25c062412ee3c4a0758b1c48fc8c642-ld.mp4',  // 路径
-                            type: 'video/mp4'  // 类型
-                        }, 
-                    ],
-                    //poster: "../../static/images/test.jpg", //你的封面地址
-                    width: document.documentElement.clientWidth,
-                    notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-                    controlBar:false
-                }
+                dataList:[
+                    {
+                        id:"1",
+                        url:"http://video.jishiyoo.com/549ed372c9d14b029bfb0512ba879055/8e2dc540573d496cb0942273c4a4c78c-15844fe70971f715c01d57c0c6595f45-ld.mp4"
+                    },
+                    {
+                        id:"2",
+                        url:"http://video.jishiyoo.com/161b9562c780479c95bbdec1a9fbebcc/8d63913b46634b069e13188b03073c09-d25c062412ee3c4a0758b1c48fc8c642-ld.mp4"
+                    },
+                    {
+                        id:"3",
+                        url:"http://video.jishiyoo.com/1eedc49bba7b4eaebe000e3721149807/d5ab221b92c74af8976bd3c1473bfbe2-4518fe288016ee98c8783733da0e2da4-ld.mp4"
+                    },
+                    {
+                        id:"4",
+                        url:"http://video.jishiyoo.com/3720932b9b474f51a4cf79f245325118/913d4790b8f046bfa1c9a966cd75099f-8ef4af9b34003bd0bc0261cda372521f-ld.mp4"
 
+                    }
+                ]
             }
         },
+        methods:{
+            //将子组件的方法传到我们的父组件上
+            //视频的播放与暂停
+            //接收滑动的索引
+            playerAction(index){
+                this.$refs.videos[index].playOrpause()
+            },
+
+            nextVideo(index){
+                this.$refs.videos[index-1].stop();
+                 this.$refs.videos[index].play()
+            },
+
+            prevVideo(index){
+                this.$refs.videos[index+1].stop();
+                 this.$refs.videos[index].play()
+            }
+        }
      }
 </script>
 <style>
@@ -84,27 +108,6 @@
     #video-list .swiper-container{
         height: 100%;
     }
-     #video-list .vjs-custom-skin > .video-js .vjs-big-play-button {
-        background-color: rgba(0,0,0,0.45);
-        font-size: 3.5em !important;
-        border-radius: 50% !important;
-        height: 1.5em !important;
-        line-height: 2em !important;
-        width: 1.5em !important;
-        top: 50% !important;
-        transform: translate(0, -50%) !important;
-        left: 45%;
-    }
-    #video-list .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
-        position: absolute;
-        top: -9px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    #video-list .swiper-slide{
-        position: relative;
-    } 
     .leftwarp{
         position: absolute;
         bottom:60px;
@@ -114,7 +117,7 @@
     .rightwarp{
         position: absolute;
         right: 0;
-        bottom: 60px;
+        bottom: 50px;
         width: 20%;
     }
 
