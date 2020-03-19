@@ -22,6 +22,11 @@ const router = new Router({
                             path:'/',
                             name:'videolist',
                             component:()=>import('./components/index/videoList.vue')
+                        },
+                        {
+                            path: '/someCity',
+                            name: 'someCity',
+                            component: () => import('./views/somecity/someCity.vue')
                         }
                     ]
                 },

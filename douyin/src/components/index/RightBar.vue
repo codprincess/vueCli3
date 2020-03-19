@@ -10,7 +10,7 @@
             <span class="iconfont icon-love-b"></span>
             <p class="des">18.0w</p>
         </div>
-        <div class="item-icon">
+        <div class="item-icon" @click.stop="showCom($event)">
              <span class="iconfont icon-pinglun"></span>
             <p class="des">14.0w</p>
         </div>
@@ -31,6 +31,13 @@ export default {
     data(){
         return{
 
+        }
+    },
+    props:["showComment"],
+    methods:{
+        showCom(e){
+            e.preventDefault();
+            this.$emit('changeCom',this.showComment)
         }
     }
 }
@@ -103,5 +110,6 @@ export default {
         0%{-webkit-transform : rotate(0deg);}
         100%{-webkit-transform : rotate(360deg);}
     }
+    
 
 </style>

@@ -15,6 +15,9 @@ import './static/iconfont/iconfont.css'
 import 'vue-video-player/src/custom-theme.css'
 import 'video.js/dist/video-js.css'
 
+import waterfall from 'vue-waterfall2'
+Vue.use(waterfall)
+
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
 

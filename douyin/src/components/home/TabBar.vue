@@ -40,7 +40,6 @@ export default {
      height: 50px;
      line-height: 50px;
      width: 100%;
-     /* background: rgba(0, 0, 0, 0.85); */
      position: fixed;
      left: 0;
      bottom: 0;
@@ -48,7 +47,7 @@ export default {
      color: #CCCAC7;
      font-size: 16px;
      justify-items: center;
-     z-index: 999;
+     z-index: 1;
  }
  .tar-bar .item{
      flex: 1;

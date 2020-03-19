@@ -4,7 +4,7 @@
             <span class="iconfont icon-live"></span>
         </div>
         <div class="middle">
-            <div class="item" @click="changeTop(0)"><span :class="topIndex==0?'active':''">同城</span></div>
+            <div class="item" @click="changeTop(0)"><router-link tag="span" to="/someCity" :class="topIndex==0?'active':''">同城</router-link></div>
             <div class="item" @click="changeTop(1)"><span :class="topIndex==1?'active':''">关注</span></div>
             <div class="item" @click="changeTop(2)"><span :class="topIndex==2?'active':''">推荐</span></div>
         </div>
