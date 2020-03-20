@@ -20,51 +20,36 @@
         <div class="comment-list">
             <div class="comment-top">
                 <div class="number">10.4w条评论</div>
-                <div @click="closeCom" class="close"><span>x</span></div>
+                <div @click="closeCom" class="close"><span>×</span></div>
             </div>
             <div class="comment-body">
-                <div class="comment-box">
+                <div class="comment-box" v-for="(item,index) in commentData" :key="index">
                     <div class="comment-item">
-                        <div class="user-pic"><img src="https://hbimg.huabanimg.com/3a406a3c11b000fbe693ff1a7b6c683ce8e2da8eba51-Pjvr4c_fw658" alt="头像"></div>
+                        <div class="user-pic"><img :src="item.userpic" alt="头像"></div>
                         <div class="item-info">
                             <div class="reply-info">
-                                <p class="nick">前端切图仔</p>
-                                <p class="reply">求不要加班，每个星期都不加班 <span class="time">03-17</span></p>
+                                <p class="nick">{{item.name}}</p>
+                                <p class="reply">{{item.reply}} <span class="time">{{item.time}}</span></p>
                             </div> 
-                            <div class="zan"><span class="iconfont icon-love-b"></span><p>120</p></div>
+                            <div class="zan"><span class="iconfont icon-love-b"></span><p>{{item.num}}</p></div>
                         </div>
                     </div>
-                    <div class="sub-comment-item">
-                        <div class="user-pic"><img src="https://hbimg.huabanimg.com/3a406a3c11b000fbe693ff1a7b6c683ce8e2da8eba51-Pjvr4c_fw658" alt="头像"></div>
+                    <div class="sub-comment-item" v-show="item.subchild" v-for="(sub_item,sub) in item.subchild" :key="sub">
+                        <div class="user-pic"><img :src="sub_item.userpic" alt="头像"></div>
                         <div class="item-info">
                             <div class="reply-info">
-                                <p class="nick">前端切图仔</p>
+                                <p class="nick">{{sub_item.name}}</p>
                                 <p class="reply">
                                     <span class="re-back">回复</span> 
-                                    <span class="re-nack">前端切图仔：</span>
-                                    <span>是的不加班</span>
-                                    <span class="time">03-17</span>
+                                    <span class="re-nack">{{sub_item.rename}}：</span>
+                                    <span>{{sub_item.reply}}</span>
+                                    <span class="time">{{sub_item.time}}</span>
                                 </p>
                             </div> 
-                            <div class="zan"><span class="iconfont icon-love-b"></span><p>120</p></div>
+                            <div class="zan"><span class="iconfont icon-love-b"></span><p>{{sub_item.num}}</p></div>
                         </div>
                     </div>
-                    <div class="sub-comment-item">
-                        <div class="user-pic"><img src="https://hbimg.huabanimg.com/3a406a3c11b000fbe693ff1a7b6c683ce8e2da8eba51-Pjvr4c_fw658" alt="头像"></div>
-                        <div class="item-info">
-                            <div class="reply-info">
-                                <p class="nick">前端切图仔</p>
-                                <p class="reply">
-                                    <span class="re-back">回复</span> 
-                                    <span class="re-nack">前端切图仔：</span>
-                                    <span>是的不加班</span>
-                                    <span class="time">03-17</span>
-                                </p>
-                            </div> 
-                            <div class="zan"><span class="iconfont icon-love-b"></span><p>120</p></div>
-                        </div>
-                    </div>
-                    <div class="more">---展开50条回复---</div>
+                    <div @click="showMore=!showMore" class="more" >---展开50条回复---</div>
                 </div>
             </div>
              <!--评论-->
@@ -96,6 +81,7 @@
         },
         data(){
             return {
+                showMore:true,
                 page:1,
                 swiperOption: {
                     direction:"vertical",
@@ -145,7 +131,50 @@
 
                     }
                 ],
-                showComment:false
+                showComment:false,
+                commentData:[
+                {
+                    userpic:"../../static/img/xxx.jpg",
+                    name:"前端",
+                    reply:"加班划水，嘻嘻",
+                    time:"03-18",
+                    num:"200",
+                    subchild:[{
+                        userpic:"../../static/img/xxx.jpg",
+                        name:"后端",
+                        reply:"掘金裁员了",
+                        time:"03-18",
+                        num:"200",
+                        rename:'前端'
+                    },
+                    {
+                        userpic:"../../static/img/xxx.jpg",
+                        name:"钉钉",
+                        reply:"掘金裁员了真的吗",
+                        time:"03-18",
+                        num:"200",
+                        rename:'后端'
+                    },
+                     {
+                        userpic:"../../static/img/xxx.jpg",
+                        name:"钉钉",
+                        reply:"掘金裁员了真的吗",
+                        time:"03-18",
+                        num:"200",
+                        rename:'后端'
+                    },
+                     {
+                        userpic:"../../static/img/xxx.jpg",
+                        name:"钉钉",
+                        reply:"掘金裁员了真的吗",
+                        time:"03-18",
+                        num:"200",
+                        rename:'后端'
+                    },
+                    ]
+                },
+
+            ]
             }
         },
         methods:{
@@ -173,7 +202,12 @@
             closeCom(){
                 this.showComment = false;
             },
-        }
+            //显示更多
+            // showMore(){
+
+            // }
+        },
+
      }
 </script>
 <style>

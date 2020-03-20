@@ -34,6 +34,11 @@ const router = new Router({
                     path:'/follow',
                     name:'follow',
                     component:()=>import('./views/follow/Follow.vue')
+                },
+                {
+                    path: '/message',
+                    name: 'message',
+                    component: () => import('./views/message/Message.vue')
                 }
             ]
         }

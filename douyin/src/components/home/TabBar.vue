@@ -12,7 +12,7 @@
             </router-link>
         </div>
         <div class="item"  @click="changeTab(3)">
-            <router-link to="/index" tag="span" :class="tabIndex==3?'active':''">消息</router-link>
+            <router-link to="/message" tag="span" :class="tabIndex==3?'active':''">消息</router-link>
         </div>
         <div class="item" @click="changeTab(4)">
             <router-link to="/index" tag="span" :class="tabIndex==4?'active':''">我</router-link>
