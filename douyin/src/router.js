@@ -39,8 +39,20 @@ const router = new Router({
                     path: '/message',
                     name: 'message',
                     component: () => import('./views/message/Message.vue')
-                }
+                },
+                
+
             ]
+        },
+        {
+            path: '/sign',
+            name: 'sign',
+            component: () => import('./views/sign.vue')
+        },
+        {
+            path: '/tpsign',
+            name: 'tpsign',
+            component: () => import('./views/tpsign.vue')
         }
     ]
 })
