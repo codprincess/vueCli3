@@ -53,6 +53,11 @@ const router = new Router({
             path: '/tpsign',
             name: 'tpsign',
             component: () => import('./views/tpsign.vue')
+        },
+        {
+            path: '/code',
+            name: 'code',
+            component: () => import('./views/code.vue')
         }
     ]
 })

@@ -20,20 +20,20 @@
                     </select>
                 </div>
                 <div class="inp">
-                    <input type="tel" class="input-control" placeholder="请输入手机号">
+                    <input type="text" v-model="phone" class="input-control" placeholder="请输入手机号"  @keyup='loginAction'>
                 </div>
             </div>
            
             <div class="sign-box">
                  <div class="inp">
-                    <input type="tel" class="input-control" placeholder="请输入密码">
+                    <input type="password" v-model="password" class="input-control" placeholder="请输入密码" @keyup='loginAction'>
                 </div>
             </div>
              <div class="not-sign">
                  <p>登录即表明同意<a href="#">抖音协议</a>和<a href="#">隐私协议</a></p>
             </div>
             <div class="code-btn">
-                <button>登录</button>
+                <button @click="loginAction" :disabled="disabled" :class="[bg?'active':'']">登录</button>
             </div>
             <div class="other-sign">
                 <span>忘记了？<router-link tag="a" to='/tpsign'>找回密码</router-link></span>
@@ -47,7 +47,28 @@ export default {
     data(){
         return{
             telEare:'',
-            telList:['+1','+81','+44','+49','+65','+27','+30']
+            telList:['+1','+81','+44','+49','+65','+27','+30'],
+            disabled:true,
+            bg:false,
+            phone:'',
+            password:''
+        }
+    },
+    methods:{
+        loginAction(){
+            var regtel =/^1[345789]{1}\d{9}$/;
+            if(this.phone == ''){
+                console.log('手机号不能为空')
+            }else if(!regtel.test(this.phone)){
+                console.log('请填写正确的手机号');
+                 
+            }else if(this.password ==''){
+               console.log('密码不能为空')
+               return
+            }else{
+                this.disabled = false;
+                this.bg = true;
+            }
         }
     }
 }
@@ -122,6 +143,10 @@ export default {
         background-color: #D8D8DA;
         color: #fff;
     }
+    .code-btn .active{
+        background-color: #FE2C55;
+        color: #fff;
+    }
     .other-sign{
         display: flex;
         justify-content: space-between;
@@ -130,4 +155,5 @@ export default {
         color: #2E68A0;
         text-decoration: none;
     }
+
 </style>

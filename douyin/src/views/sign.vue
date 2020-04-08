@@ -21,14 +21,14 @@
                     </select>
                 </div>
                 <div class="inp">
-                    <input type="tel" class="input-control" placeholder="请输入手机号">
+                    <input  @input="change" type="tel" v-model="phone" class="input-control" placeholder="请输入手机号">
                 </div>
             </div>
             <div class="not-sign">
                 <p>未注册的手机号验证通过后将自动注册</p>
             </div>
             <div class="code-btn">
-                <button>获取短信验证码</button>
+                <button  :disabled="disabled" @click="toCode" :class="[bg?'active':'']">获取短信验证码</button>
             </div>
             <div class="other-sign">
                 <router-link tag="a" to='/tpsign'>密码登录</router-link>
@@ -57,7 +57,10 @@ export default {
         return{
             telEare:'',
             telList:['+1','+81','+44','+49','+65','+27','+30'],
-            maskShow:false
+            maskShow:false,
+            phone:'',
+            bg:false,
+            disabled:true
         }
     },
     methods:{
@@ -66,6 +69,22 @@ export default {
         },
         closeMask(){
             this.maskShow = false;
+        },
+        toCode(){
+            if(!this.disabled){
+                this.$router.push('/code');
+            }
+        },
+        change(e){
+            this.phone = e.target.value;
+            var regtel =/^1[345789]{1}\d{9}$/;
+            if(regtel.test(this.phone)){
+               this.bg = true;
+               this.disabled = false;
+            }else{
+                this.bg = false;
+                this.disabled = true;
+            }
         }
     }
 }
@@ -138,6 +157,10 @@ export default {
         padding: 10px 0;
         border: none;
         background-color: #D8D8DA;
+        color: #fff;
+    }
+    .code-btn .active{
+        background-color: #FE2C55;
         color: #fff;
     }
     .other-sign{
