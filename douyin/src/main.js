@@ -15,6 +15,11 @@ import './static/iconfont/iconfont.css'
 import 'vue-video-player/src/custom-theme.css'
 import 'video.js/dist/video-js.css'
 
+//自定义弹框
+import Toast from './components/toast/toast.js'
+Vue.prototype.$toast = Toast
+
+
 import waterfall from 'vue-waterfall2'
 Vue.use(waterfall)
 

@@ -58,12 +58,26 @@ export default {
         loginAction(){
             var regtel =/^1[345789]{1}\d{9}$/;
             if(this.phone == ''){
-                console.log('手机号不能为空')
+                this.$toast({
+                    type:'error',
+                    message:'电话号码不能为空',
+                    duration: 2000
+                })
             }else if(!regtel.test(this.phone)){
-                console.log('请填写正确的手机号');
+               // console.log('请填写正确的手机号');
+               this.$toast({
+                    type:'error',
+                    message:'请填写正确的手机号',
+                    duration: 2000
+                })
                  
             }else if(this.password ==''){
-               console.log('密码不能为空')
+               //console.log('密码不能为空')
+               this.$toast({
+                    type:'error',
+                    message:'密码不能为空',
+                    duration: 2000
+                })
                return
             }else{
                 this.disabled = false;

@@ -40,6 +40,11 @@ const router = new Router({
                     name: 'message',
                     component: () => import('./views/message/Message.vue')
                 },
+                {
+                    path: '/me',
+                    name: 'me',
+                    component: () => import('./views/profile/Me.vue')
+                },
                 
 
             ]
@@ -58,6 +63,11 @@ const router = new Router({
             path: '/code',
             name: 'code',
             component: () => import('./views/code.vue')
+        },
+        {
+            path: '/toast',
+            name: 'toast',
+            component: () => import('./components/toast/toast.vue')
         }
     ]
 })
