@@ -68,7 +68,12 @@ const router = new Router({
             path: '/toast',
             name: 'toast',
             component: () => import('./components/toast/toast.vue')
-        }
+        },
+        {
+            path: '/edit',
+            name: 'edit',
+            component: () => import('./views/profile/edit.vue')
+        },
     ]
 })
 
