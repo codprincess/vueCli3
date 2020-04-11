@@ -74,6 +74,16 @@ const router = new Router({
             name: 'edit',
             component: () => import('./views/profile/edit.vue')
         },
+        {
+            path: '/publish',
+            name: 'publish',
+            component: () => import('./views/publish/publish.vue')
+        },
+        {
+            path: '/upload',
+            name: 'upload',
+            component: () => import('./views/publish/upload.vue')
+        },
     ]
 })
 
