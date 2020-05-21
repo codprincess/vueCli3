@@ -84,7 +84,28 @@ const router = new Router({
             name: 'upload',
             component: () => import('./views/publish/upload.vue')
         },
+        {
+            path: '/test',
+            name: 'test',
+            component: () => import('./views/publish/test.vue')
+        },
+        {
+            path: '/test2',
+            name: 'test2',
+            component: () => import('./views/publish/test2.vue')
+        },
     ]
+});
+
+//路由守卫
+router.beforeEach((to,from,next)=>{
+    const isLogin = localStorage.token_login?true:false;
+    if(to.path == '/sign'){
+        next();
+    }else{
+        //判断是否在登录状态下
+        isLogin ? next() : next('/sign'|| '/tpsign')
+    }
 })
 
 export default router

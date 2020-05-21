@@ -1,5 +1,6 @@
 <template>
-    <div class="sign">
+    <div>
+        <div class="sign">
         <div class="sign-header">
             <router-link tag="span" to="/" class="icon">×</router-link>
             <span>帮助</span>
@@ -49,6 +50,8 @@
             </div>
         </div>
          </transition>
+    </div>
+    
     </div>
 </template>
 <script>

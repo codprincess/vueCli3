@@ -54,7 +54,7 @@
 
         <!--发布页面-->
         <div class="edit-pub" v-if="editPub">
-            <user-header title="发布" hasBack="true"></user-header>
+            <user-header title="发布" :hasBack="true" rightTxt=""></user-header>
             <div class="text-warp">
                 <div class="text-box">
                     <div class="textarea-contr">
@@ -66,19 +66,32 @@
                         <img src="../../static/image/avatar.jpg" alt="">
                     </div>
                </div>
+               <div class="edit-box">
+                   <div class="edit-item">
+                        <span class="label">{{path}}<span></span></span>
+                        <span class="icon">→</span>
+                    </div>
+                    <div class="edit-item">
+                        <span class="label"><span></span>谁可以看</span>
+                        <span>公开<span class="icon">→</span></span >
+                    </div>
+               </div>
                 
             </div>
         </div>
     </div>
 </template>
 <script>
+import AMap from 'AMap'
 import userHeader from '../../components/header/userHeader'
 export default {
     components:{
         userHeader
     },
+   
     data(){
         return{
+            path:'',
             editPub:true,
             imgId:0,
             select:false,
@@ -114,13 +127,33 @@ export default {
                 ],
         }
     },
+    created(){
+        this.getLocationCity();
+       this.pic='http://video.jishiyoo.com/3720932b9b474f51a4cf79f245325118/913d4790b8f046bfa1c9a966cd75099f-8ef4af9b34003bd0bc0261cda372521f-ld.mp4?x-oss-process=video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast';
+        console.log(this.pic)
+    },
     methods:{
         changeTab(index){
             this.tabIndex = index
         },
         seleImg(){
             this.select = !this.select
+        },
+
+        getLocationCity(){
+            let _this = this;
+            AMap.plugin('AMap.CitySearch', function () {
+                var citySearch = new AMap.CitySearch()
+                citySearch.getLocalCity(function (status, result) {
+                    console.log('222',result);
+                if (status === 'complete' && result.info === 'OK') {
+                    // 查询成功，result即为当前所在城市信息
+                    _this.path = result.city
+                }
+                })
+            })
         }
+
     }
 }
 </script>
@@ -256,6 +289,22 @@ export default {
         padding: 6px 20px;
         color: #ffffff;
         margin-right: 10px;
+    }
+    .edit-box{
+        color: silver;
+        border-top: 1px #292831 solid;
+    }
+    .edit-item{
+        display: flex;
+        justify-content: space-between;
+        line-height: 60px;
+    }
+    .edit-item .icon{
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    .edit-item .label{
+        color: #ffffff;
     }
     
 </style>

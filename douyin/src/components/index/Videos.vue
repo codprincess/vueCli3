@@ -10,7 +10,8 @@
 <script>
 
 import 'video.js/dist/video-js.css'
- import { videoPlayer } from 'vue-video-player'
+import { videoPlayer } from 'vue-video-player'
+import 'videojs-contrib-hls'
 export default {
     name:'Video',
     props:['videoList','index'],
@@ -25,7 +26,7 @@ export default {
                 sources: [
                     {
                         src: this.videoList.url,
-                        type: 'video/mp4'  // 类型
+                        type: "video/mp4",
                     }, 
                 ],
                 //poster: "../../static/images/test.jpg", //你的封面地址

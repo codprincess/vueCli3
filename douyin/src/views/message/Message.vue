@@ -89,6 +89,7 @@ export default {
         padding: 0 20px;
         background-color: #101821;
         color: #ffffff;
+        
     }
     .msg-nav{
         padding: 20px 5px;
