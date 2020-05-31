@@ -23,7 +23,8 @@ import waterfall from 'vue-waterfall2'
 Vue.use(waterfall)
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
-axios.defaults.baseURL = '';
+Vue.prototype.$axios = axios;
+axios.defaults.baseURL = 'http://localhost:3000/';
 //请求拦截
 axios.interceptors.request.use(
   config => {

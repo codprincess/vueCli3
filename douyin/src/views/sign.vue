@@ -1,14 +1,100 @@
 <template>
     <div>
-        <div class="sign">
+        <!--验证码登录-->
+        <div v-show="signbox">
+            <div class="sign">
+            <div class="sign-header">
+                <router-link tag="span" to="/" class="icon">×</router-link>
+                <span>帮助</span>
+            </div>
+            <div class="sign-content">
+                <div class="des">
+                    <h2>登录后可展现自己</h2>
+                    <p>登录即表明同意<a href="#">抖音协议</a>和<a href="#">隐私协议</a></p>
+                </div>
+                <div class="sign-box">
+                    <div class="sele">
+                        <select name="tel" class="sele-control" v-model="telEare">
+                            <option value="">+86</option>
+                            <option v-for="(item, index) in telList"
+                                :value="index"
+                                :key="index">
+                            {{ item }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="inp">
+                        <input  @input="change" type="tel" v-model="phone" class="input-control" placeholder="请输入手机号">
+                    </div>
+                </div>
+                <div class="not-sign">
+                    <p>未注册的手机号验证通过后将自动注册</p>
+                </div>
+                <div class="code-btn">
+                    <button  :disabled="disabled" @click="getCode" :class="[bg?'active':'']">获取短信验证码</button>
+                </div>
+                <div class="other-sign">
+                    <span @click="toTp">密码登录</span>
+                    <!-- <router-link tag="a" to='/tpsign'>密码登录</router-link> -->
+                    <span @click="open">其他方式登录</span>
+                </div>
+            </div>
+            <!--其他登录方式-->
+            <transition name="up">
+            <div class="mask" v-if="maskShow">
+                <div class="oauth">
+                    <ul>
+                        <li class="oauth-item"><span></span>今日头条登录</li>
+                        <li class="oauth-item"><span></span>QQ登录</li>
+                        <li class="oauth-item"><span></span>微信登录</li>
+                        <li class="oauth-item"><span></span>微博登录</li>
+                        <li class="oauth-item" @click="closeMask">取消</li>
+                    </ul>
+                </div>
+            </div>
+            </transition>
+        </div>
+    </div>
+
+    <!--获取验证码-->
+    <div class="sign" v-show="codeBox">
         <div class="sign-header">
-            <router-link tag="span" to="/" class="icon">×</router-link>
+            <span @click="toCodepage" class="icon">←</span>
+            <!-- <router-link to="/sign" tag="span" class="icon">←</router-link> -->
             <span>帮助</span>
         </div>
         <div class="sign-content">
             <div class="des">
-                <h2>登录后可展现自己</h2>
-                <p>登录即表明同意<a href="#">抖音协议</a>和<a href="#">隐私协议</a></p>
+                <h2>请输入验证码</h2>
+                <p>验证码已通过短信发送至+86 <span>15253623889</span></p>
+            </div>
+            <div class="sign-box">
+                
+                <div class="inp">
+                    <input @input="changeCode" type="tel" v-model="code" class="input-control" placeholder="请输入验证码">
+                </div>
+                <div class="sele">
+                    {{time}}
+                </div>
+            </div> 
+            <div class="code-btn">
+                <button :disabled="disabled1" :class="[bg1?'active':'']" class="load-btn"> <div class="loads"></div>登录</button>
+            </div>
+           
+        </div>
+    </div>
+
+
+    <!--手机密码登录-->
+    <div class="sign" v-show="tpSign">
+        <div class="sign-header">
+            <!-- <router-link to="/sign" tag="span" class="icon">←</router-link> -->
+            <span @click="goBack" class="icon">←</span>
+            <span>帮助</span>
+        </div>
+        <div class="sign-content">
+            <div class="des">
+                <h2>手机号密码登录</h2>
             </div>
             <div class="sign-box">
                 <div class="sele">
@@ -17,39 +103,31 @@
                         <option v-for="(item, index) in telList"
                             :value="index"
                             :key="index">
-                        {{ item }}
+                            {{ item }}
                         </option>
                     </select>
                 </div>
                 <div class="inp">
-                    <input  @input="change" type="tel" v-model="phone" class="input-control" placeholder="请输入手机号">
+                    <input type="text" v-model="phone" class="input-control" placeholder="请输入手机号"  @keyup='loginAction'>
                 </div>
             </div>
-            <div class="not-sign">
-                <p>未注册的手机号验证通过后将自动注册</p>
+           
+            <div class="sign-box">
+                 <div class="inp">
+                    <input type="password" v-model="password" class="input-control" placeholder="请输入密码" @keyup='loginAction'>
+                </div>
+            </div>
+             <div class="not-sign">
+                 <p>登录即表明同意<a href="#">抖音协议</a>和<a href="#">隐私协议</a></p>
             </div>
             <div class="code-btn">
-                <button  :disabled="disabled" @click="toCode" :class="[bg?'active':'']">获取短信验证码</button>
+                <button @click="loginAction" :disabled="disabled2" :class="[bg2?'active':'']">登录</button>
             </div>
             <div class="other-sign">
-                <router-link tag="a" to='/tpsign'>密码登录</router-link>
-                <span @click="open">其他方式登录</span>
+                <span>忘记了？<router-link tag="a" to='/tpsign'>找回密码</router-link></span>
+               
             </div>
         </div>
-        <!--其他登录方式-->
-        <transition name="up">
-        <div class="mask" v-if="maskShow">
-            <div class="oauth">
-                <ul>
-                    <li class="oauth-item"><span></span>今日头条登录</li>
-                    <li class="oauth-item"><span></span>QQ登录</li>
-                    <li class="oauth-item"><span></span>微信登录</li>
-                    <li class="oauth-item"><span></span>微博登录</li>
-                    <li class="oauth-item" @click="closeMask">取消</li>
-                </ul>
-            </div>
-        </div>
-         </transition>
     </div>
     
     </div>
@@ -63,8 +141,23 @@ export default {
             maskShow:false,
             phone:'',
             bg:false,
-            disabled:true
+            disabled:true,
+            bg1:false,
+            disabled1:true,
+            bg2:false,
+            disabled2:true,
+            signbox:true,
+            tpSign:false,
+            password:'',
+            codeBox:false,
+            time:60,
+            code:'',
+
         }
+    },
+    created(){
+        // this.timer();
+        this.getCode()
     },
     methods:{
         open(){
@@ -73,9 +166,31 @@ export default {
         closeMask(){
             this.maskShow = false;
         },
-        toCode(){
+        //点击获取验证码
+        getCode(){
             if(!this.disabled){
-                this.$router.push('/code');
+                this.codeBox = true;
+                this.signbox = false;
+                 this.$axios.post('users/sendCode',{phone:this.phone}).then(res=>{
+                     console.log('========',res);
+                 })
+            }
+        },
+        //检测验证码
+        changeCode(e){
+            this.code = e.target.value;
+            if(this.code == this.codes){
+                this.disabled = false;
+                this.bg= true
+            }
+        },
+        //验证码倒计时
+        timer(){
+            if(this.time>0){
+                this.time--;
+                setTimeout(this.timer,1000);
+            }else{
+                //this.$router.push('/sign');
             }
         },
         change(e){
@@ -87,6 +202,48 @@ export default {
             }else{
                 this.bg = false;
                 this.disabled = true;
+            }
+        },
+        toCodepage(){
+            this.codeBox = false;
+            this.signbox = true;
+        },
+        toTp(){
+            this.tpSign = true;
+            this.signbox = false;
+        },
+        goBack(){
+            this.tpSign = false;
+            this.signbox = true;
+            console.log(this.tpSign);
+        },
+        loginAction(){
+            var regtel =/^1[345789]{1}\d{9}$/;
+            if(this.phone == ''){
+                this.$toast({
+                    type:'error',
+                    message:'电话号码不能为空',
+                    duration: 2000
+                })
+            }else if(!regtel.test(this.phone)){
+               // console.log('请填写正确的手机号');
+               this.$toast({
+                    type:'error',
+                    message:'请填写正确的手机号',
+                    duration: 2000
+                })
+                 
+            }else if(this.password ==''){
+               //console.log('密码不能为空')
+               this.$toast({
+                    type:'error',
+                    message:'密码不能为空',
+                    duration: 2000
+                })
+               return
+            }else{
+                this.disabled = false;
+                this.bg = true;
             }
         }
     }
