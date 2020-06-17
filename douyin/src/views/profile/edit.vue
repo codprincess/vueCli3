@@ -13,35 +13,35 @@
            <div class="edit-box">
                <div class="edit-item">
                    <span class="label">名字</span>
-                   <span>傻啦吧唧<span class="icon">→</span></span>
+                   <span>傻啦吧唧<span class="icon">></span></span>
                </div>
                <div class="edit-item">
                    <span class="label">抖音号</span>
-                   <span>7342883274<span class="icon">→</span></span>
+                   <span>7342883274<span class="icon">></span></span>
                </div>
                <div class="edit-item">
                    <span class="label">简介</span>
-                   <span>越努力越幸运<span class="icon">→</span></span>
+                   <span>越努力越幸运<span class="icon">></span></span>
                </div>
                 <div class="edit-item">
                    <span class="label">学校</span>
-                   <span>点击设置<span class="icon">→</span></span>
+                   <span>点击设置<span class="icon">></span></span>
                </div>
                 <div class="edit-item">
                    <span class="label">性别</span>
-                   <span>女<span class="icon">→</span></span>
+                   <span>女<span class="icon">></span></span>
                </div>
                 <div class="edit-item">
                    <span class="label">生日</span>
-                   <span>1845-8-4<span class="icon">→</span></span>
+                   <span>1845-8-4<span class="icon">></span></span>
                </div>
                 <div class="edit-item">
                    <span class="label">地区</span>
-                   <span>中国最富垃圾场<span class="icon">→</span></span>
+                   <span>中国最富垃圾场<span class="icon">></span></span>
                </div>
                 <div class="edit-item">
                    <span class="label">头像挂件</span>
-                   <span>点击设置<span class="icon">→</span></span>
+                   <span>点击设置<span class="icon">></span></span>
                </div>
            </div>
 

@@ -38,23 +38,23 @@
                 <div>
                     <div v-show="tabIndex===0" class="tab-content">
                     <div class="tab-img">
-                        <img src="../../static/image/1.jpg" alt="">
+                        <!-- <img src="../../static/image/1.jpg" alt=""> -->
                         <img src="../../static/image/bg2.png" alt="">
-                        <img src="../../static/image/2.png" alt="">
+                        <!-- <img src="../../static/image/2.png" alt=""> -->
                     </div>
                     </div>
                     <div v-show="tabIndex===1" class="tab-content">
                         <div class="tab-img">
-                        <img src="../../static/image/1.jpg" alt="">
+                        <!-- <img src="../../static/image/1.jpg" alt=""> -->
                         <img src="../../static/image/bg2.png" alt="">
-                        <img src="../../static/image/2.png" alt="">
+                        <!-- <img src="../../static/image/2.png" alt=""> -->
                     </div>
                     </div>
                     <div v-show="tabIndex===2" class="tab-content">
                         <div class="tab-img">
-                        <img src="../../static/image/1.jpg" alt="">
+                        <!-- <img src="../../static/image/1.jpg" alt=""> -->
                         <img src="../../static/image/bg2.png" alt="">
-                        <img src="../../static/image/2.png" alt="">
+                        <!-- <img src="../../static/image/2.png" alt=""> -->
                     </div>
                     </div>
                 </div>

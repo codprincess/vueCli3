@@ -66,19 +66,19 @@
         <div class="sign-content">
             <div class="des">
                 <h2>请输入验证码</h2>
-                <p>验证码已通过短信发送至+86 <span>15253623889</span></p>
+                <p>验证码已通过短信发送至+86 <span>{{phone}}</span></p>
             </div>
             <div class="sign-box">
                 
                 <div class="inp">
                     <input @input="changeCode" type="tel" v-model="code" class="input-control" placeholder="请输入验证码">
                 </div>
-                <div class="sele">
+                <div class="sele" @click="getCode">
                     {{time}}
                 </div>
             </div> 
             <div class="code-btn">
-                <button :disabled="disabled1" :class="[bg1?'active':'']" class="load-btn"> <div class="loads"></div>登录</button>
+                <button @click="phCodeLogin" :disabled="disabled1" :class="[bg1?'active':'']" class="load-btn"> <div class="loads"></div>登录</button>
             </div>
            
         </div>
@@ -96,8 +96,8 @@
             <div class="des">
                 <h2>手机号密码登录</h2>
             </div>
-            <div class="sign-box">
-                <div class="sele">
+            <div class="sign-box" style="margin-top:30px">
+                <!-- <div class="sele">
                     <select name="tel" class="sele-control" v-model="telEare">
                         <option value="">+86</option>
                         <option v-for="(item, index) in telList"
@@ -106,22 +106,22 @@
                             {{ item }}
                         </option>
                     </select>
-                </div>
-                <div class="inp">
-                    <input type="text" v-model="phone" class="input-control" placeholder="请输入手机号"  @keyup='loginAction'>
+                </div> -->
+                <div class="inp" >
+                    <input type="text" v-model="username" class="input-control" placeholder="请输入用户名"  >
                 </div>
             </div>
            
-            <div class="sign-box">
+            <div class="sign-box" style="margin-top:30px">
                  <div class="inp">
-                    <input type="password" v-model="password" class="input-control" placeholder="请输入密码" @keyup='loginAction'>
+                    <input type="password" v-model="password" class="input-control" placeholder="请输入密码" >
                 </div>
             </div>
              <div class="not-sign">
                  <p>登录即表明同意<a href="#">抖音协议</a>和<a href="#">隐私协议</a></p>
             </div>
             <div class="code-btn">
-                <button @click="loginAction" :disabled="disabled2" :class="[bg2?'active':'']">登录</button>
+                <button @click="loginAction"  :class="'active'">登录</button>
             </div>
             <div class="other-sign">
                 <span>忘记了？<router-link tag="a" to='/tpsign'>找回密码</router-link></span>
@@ -152,6 +152,7 @@ export default {
             codeBox:false,
             time:60,
             code:'',
+            username:''
 
         }
     },
@@ -172,7 +173,20 @@ export default {
                 this.codeBox = true;
                 this.signbox = false;
                  this.$axios.post('users/sendCode',{phone:this.phone}).then(res=>{
-                     console.log('========',res);
+                     console.log(res)
+                     if(res.data.code== 200 ){
+                        this.time = 60;
+                        this.timer()
+                        this.codes = res.data.mycode
+                        console.log('111',this.codes)
+                     }else{
+                         this.time = '稍后重试';
+                          this.$toast({
+                                type:'error',
+                                message:res.data.msg,
+                                duration: 2000
+                            })
+                     }
                  })
             }
         },
@@ -180,10 +194,27 @@ export default {
         changeCode(e){
             this.code = e.target.value;
             if(this.code == this.codes){
-                this.disabled = false;
-                this.bg= true
+                this.disabled1 = false;
+                this.bg1= true
             }
         },
+        //手机号验证码登录
+        phCodeLogin(){
+            this.$axios.post('users/codePhoneLogin',{phone:this.phone,code:this.code}).then(res=>{
+                console.log('---',res);
+                if(res.data.code == 200){
+                    this.$toast({
+                        type:'success',
+                        message:res.data.msg,
+                        duration: 2000
+                    })
+                    this.$router.push('/index');
+                }
+            }).catch(err=>{
+                console.log(err);
+            })
+        },
+        
         //验证码倒计时
         timer(){
             if(this.time>0){
@@ -218,21 +249,12 @@ export default {
             console.log(this.tpSign);
         },
         loginAction(){
-            var regtel =/^1[345789]{1}\d{9}$/;
-            if(this.phone == ''){
+            if(this.username == ''){
                 this.$toast({
                     type:'error',
-                    message:'电话号码不能为空',
+                    message:'用户名不能为空',
                     duration: 2000
                 })
-            }else if(!regtel.test(this.phone)){
-               // console.log('请填写正确的手机号');
-               this.$toast({
-                    type:'error',
-                    message:'请填写正确的手机号',
-                    duration: 2000
-                })
-                 
             }else if(this.password ==''){
                //console.log('密码不能为空')
                this.$toast({
@@ -242,8 +264,29 @@ export default {
                 })
                return
             }else{
-                this.disabled = false;
-                this.bg = true;
+                this.disabled2 = false;
+                this.bg2 = true;
+                this.$axios.post('users/login',{username:this.username,password:this.password}).then(res=>{
+                console.log('12345',res);
+                if(res.data.code == 200){
+                    this.$toast({
+                        type:'success',
+                        message:res.data.msg,
+                        duration: 2000
+                    })
+                    let token_login = 1;
+                    localStorage.setItem('token_login',token_login)
+                    this.$router.push('/index');
+                }else{
+                    this.$toast({
+                        type:'error',
+                        message:res.data.msg,
+                        duration: 2000
+                    })
+                }
+            }).catch(err=>{
+                console.log(err);
+            })
             }
         }
     }
